@@ -110,8 +110,7 @@ def contact_dialog():
   <div class="cd-head">
     <button type="button" class="icon-btn cd-close" data-contact-close aria-label="Close contact window">{icon("i-close")}</button>
     <span class="tag tag-sky">Get in touch</span>
-    <h2 id="contact-title">Contact</h2>
-    <p class="is-placeholder">[How to reach me.]</p>
+        <h2 id="contact-title">Contact</h2>
   </div>
   <div class="cd-body">
     <div class="cd-email">
@@ -144,10 +143,6 @@ def footer():
 <footer class="footer">
   <div class="wrap">
     <div class="footer-grid">
-      <div>
-        <h2 class="is-placeholder">[Footer heading]</h2>
-        <p class="is-placeholder">[Footer note.]</p>
-      </div>
       <button type="button" class="btn btn-flare" data-contact aria-haspopup="dialog">{icon("i-mail")}Get in touch</button>
     </div>
     <div class="footer-small">
@@ -237,7 +232,7 @@ def co(names):
 PUBLICATIONS = [
     dict(
         id="procurement",
-        year="Forthcoming",
+        year="forthcoming",
         title="Rules, Discretion, and Corruption in Procurement: Evidence from Italian Government Contracting",
         href="https://www.dropbox.com/scl/fi/rm4pazbr1q9bvx9muw6jx/criminal_procurement_JPEMicroFinalSubmitted_v2.pdf?rlkey=m45rbdbra9cwlou7653mn4hrd&st=czyyl55o&dl=0",
         coauthors=["Francesco Decarolis", "Raymond Fisman", "Paolo Pinotti"],
@@ -296,31 +291,31 @@ PUBLICATIONS = [
 WORKING = [
     dict(
         id="ambiguous-attribution",
-        status=("sub", "Submitted"),
+        status="Submitted",
         title="Ambiguous Attribution: Theory and Evidence",
         href="https://www.nber.org/papers/w35550",
         coauthors=["Ricardo Alonso", "Monica Martinez-Bravo", "Gerard Padró i Miquel", "Carlos Sanz"],
-        venue="NBER Working Paper 35550",
+        venue="NBER WP 35550",
         links=[("NBER WP 35550", "https://www.nber.org/papers/w35550", "i-arrow")],
         abstract="Clarity of responsibility is an essential element of political accountability. We develop a rational model of Bayesian updating in the presence of ambiguous attribution and we test its predictions using an original survey. We show that respondents’ partisanship, assessment of public healthcare quality, and beliefs over which layer of government is responsible for healthcare are correlated as predicted: good-assessment voters attribute responsibility to the layer governed by their preferred party, while bad-assessment voters blame the layer governed by the party they dislike. These partisan patterns of credit and blame, often interpreted as evidence of motivated reasoning or partisan bias, can thus arise from rational Bayesian updating under attribution ambiguity. No such partisan patterns exist where the same party is in charge of regional and central government. A survey experiment in which we inform subjects of the official quality of healthcare has them update in the predicted, partisan, direction. Model and empirical results show that partisan priors are extremely hard to dislodge when attribution is ambiguous.",
     ),
     dict(
         id="lapdogs-watchdogs",
-        status=("rr", "R&R · JPE"),
+        status="Revised and Resubmitted, Journal of Political Economy",
         title="From Lapdogs to Watchdogs: Selecting Monitors in Multi-Layered Organizations",
         href="https://www.nber.org/papers/w30644",
         coauthors=[],
-        venue="Revised and Resubmitted, <em>Journal of Political Economy</em> · NBER WP 30644",
+        venue="NBER WP 30644",
         links=[("NBER WP 30644", "https://www.nber.org/papers/w30644", "i-arrow")],
         abstract="A central challenge in public finance is how to design oversight institutions that align local governments' incentives with national fiscal objectives. While monitoring can mitigate agency problems, it may itself be rendered ineffective if monitors are corruptible. In this paper, I evaluate the consequences of changes in the design of monitoring institutions for organizational performance. I exploit the staggered introduction of a reform that removed the control of municipal auditors’ appointments from local politicians and introduced a random assignment mechanism. I obtain four main findings. First, random matching severs auditors-mayors connections. Second, treated municipalities significantly and persistently improve their net surpluses and debt repayments, in line with national government objectives. Third, the fiscal improvement results from a sizeable increase in tax capacity. Fourth, treatment effects are significantly larger where the risk of auditor capture was highest before the reform, but also increasing in auditors' expertise—suggesting the potential presence of a bias-information trade-off. Overall, the results highlight the value of monitors’ independence and illustrate how changes in organizational design can substantially improve governance.",
     ),
     dict(
         id="revolving-door",
-        status=("sub", "Submitted"),
+        status="Submitted",
         title="Revolving Door Laws and Political Selection",
         href="https://www.dropbox.com/scl/fi/brwsp2avm7kqlvnnmsabi/Revolving_Door_AERSubmit.pdf?rlkey=0f4ir31joz1f3z0jvl9wl653l&dl=0",
         coauthors=["Raymond Fisman", "Jetson Leder-Luis", "Catherine O’Donnell"],
-        venue="NBER Working Paper 33626",
+        venue="NBER WP 33626",
         links=[
             ("Paper", "https://www.dropbox.com/scl/fi/brwsp2avm7kqlvnnmsabi/Revolving_Door_AERSubmit.pdf?rlkey=0f4ir31joz1f3z0jvl9wl653l&dl=0", "i-file"),
             ("NBER WP 33626", "https://www.nber.org/papers/w33626", "i-arrow"),
@@ -329,43 +324,43 @@ WORKING = [
     ),
     dict(
         id="stimulus-transfers",
-        status=("sub", "Submitted"),
+        status="Submitted",
         title="The Political Economy of Stimulus Transfers",
         href="https://www.dropbox.com/scl/fi/97t0c82ba7vr9jo8q8l0y/80euro_june42025.pdf?rlkey=g8iqcop7pc5etvg5ytkq1bwnw&dl=0",
         coauthors=[],
-        venue="Working paper",
+        venue="",
         links=[("Paper", "https://www.dropbox.com/scl/fi/97t0c82ba7vr9jo8q8l0y/80euro_june42025.pdf?rlkey=g8iqcop7pc5etvg5ytkq1bwnw&dl=0", "i-file")],
         abstract="Stimulus payments are one of the most common policy tools during economic downturns. To maximize effectiveness, transfers should target liquidity-constrained individuals, yet they often end up benefiting the middle class. I argue that political incentives might explain this puzzle. I study one of the largest stimulus tax credits in history, that targeted median earners and excluded the lowest-income groups. The transfer modestly boosted consumption but significantly increased the incumbent’s vote share by 0.18 pp per 1 pp rise in recipients. Electoral rewards persist up to five years post-policy introduction. I then document stronger responses in localities with relatively richer beneficiaries, suggesting that electoral incentives may prompt politicians to prioritize middle-income, electorally responsive groups over the poorer, more consumption-responsive ones. Finally, I document significant punishment of the incumbent among individuals who lose access to the transfer, which help explain politicians’ reluctance to repeal stimulus tax cuts, despite their substantial costs. Overall, these findings demonstrate the importance of considering political incentives to understand the design of major taxes and transfers.",
     ),
     dict(
         id="government-audits",
-        status=("rr", "R&R · JLEO"),
+        status="Revised and Resubmitted to Journal of Law, Economics and Organization",
         title="Government Audits",
         href="https://www.nber.org/papers/w30975",
         coauthors=["Martina Cuneo", "Jetson Leder-Luis"],
-        venue="Revised and Resubmitted, <em>Journal of Law, Economics, and Organization</em> · NBER WP 30975",
+        venue="NBER WP 30975",
         links=[("NBER WP 30975", "https://www.nber.org/papers/w30975", "i-arrow")],
         abstract="Audits are a classic mechanism to ensure accountability in the management of public funds. While commonly used, audits are costly and do not always produce valuable results. In this paper, we use theory and empirics to examine the effectiveness of internal government audits as a function of state capacity. In our model, the value of audits depends on both the underlying presence of abuse and on the government's ability to enforce punishments, making auditing most effective in middling state-capacity environments. Consistent with this theory, we survey all the existing credibly causal studies and show that government audits have positive effects mostly in middle-state-capacity environments like Brazil. Finally, we present novel empirical evidence on the effectiveness of audits for local governments in the US, a high-capacity and low-impropriety environment. Using a previously unexplored threshold in federal audit rules and a dynamic regression discontinuity design, we find no marginal effects of audits on any fiscal outcomes of local governments, a result that is in line with the predictions of our model. Overall, our findings suggest that countries like the US might benefit from relaxing audit requirements and reducing their regulatory burden.",
     ),
     dict(
         id="back-to-black",
-        status=("rr", "R&R · JHR"),
+        status="RR at Journal of Human Resources",
         title="Back to Black? The Impact of Regularizing Migrant Workers",
         href="https://www.dropbox.com/scl/fi/jcfgsk04utidgqgmboh4f/DPMNV_2023_v5.pdf?rlkey=bx2pvbb7x2auixcx8cikqfbb0&dl=0",
         coauthors=["Edoardo Di Porto", "Enrica Maria Martino", "Paolo Naticchioni"],
-        venue="Revised and Resubmitted, <em>Journal of Human Resources</em>",
+        venue="",
         links=[("Paper", "https://www.dropbox.com/scl/fi/jcfgsk04utidgqgmboh4f/DPMNV_2023_v5.pdf?rlkey=bx2pvbb7x2auixcx8cikqfbb0&dl=0", "i-file")],
         abstract="Using unique matched employer-employee data on the universe of workers in Italy, we evaluate one of the world's largest amnesties that regularized over 700,000 undocumented migrants. We employ a difference-in-differences design, comparing firms that regularized at least one migrant to a control group of eligible firms that applied for the regularization process but did not complete it. We document four sets of results. First, the policy has a positive and sizeable impact on firm-level employment in the short run, which only partially fades out in the long run. Second, average firm-level wages experience a small and persistent decrease. Third, at the firm-level, the consequences of the regularization are mainly borne by incumbent migrants, with more limited impact on natives. At the individual level, although the regularization induces changes in the composition of employment, it does not affect native workers' careers in the subsequent years. Fourth, we document a sizeable hysteresis effect of the regularization: 73.5% of newly regularized migrants are still employed in the formal Italian labor market after 4 years, well beyond the expiration of their temporary work permit.",
     ),
     dict(
         id="eu-enlargement",
-        status=("rr", "R&R · EJ"),
+        status="Revised and Resubmitted to Economic Journal",
         title="Immigrants’ Legal Status and Firms: Evidence from the 2007 EU Enlargement",
         href="https://www.nber.org/papers/w35493",
         coauthors=["Vittoria Dicandia"],
-        venue="Revised and Resubmitted, <em>Economic Journal</em> · NBER WP 35493",
-        links=[("NBER WP 35493", "https://www.nber.org/papers/w35493", "i-arrow")],
-        note='This project is made possible thanks to the ' + ext("https://www.inps.it/it/it/dati-e-bilanci/attivit--di-ricerca/programma-visitinps-scholars.html", "VisitINPS Scholars") + ' program, granting access to the universe of Italian Social Security data.',
+        venue="",
+        links=[],
+        note="This project is made possible thanks to the Visitinps Scholars program, granting access to the universe of italian Social Security Data.",
         abstract="We study how firms and workers adjust when previously restricted migrants gain full and portable work rights in a labor market with substantial informality. We exploit the 2007 EU accession of Bulgaria and Romania, which granted unrestricted work rights to Italy's largest migrant group. Using matched employer–employee administrative data and an IV-DID design, we find that firms suddenly and persistently shift employment composition toward EU07 workers, compressing the native employment share without reducing native hiring or increasing separations. We don't detect any significant change in wages for either natives or EU07 workers. For migrants, this null effect reflects offsetting compositional shifts as newly observed and incumbent EU07 workers enter the formal workforce with different wage trajectories. Consistent with a shift in bargaining power toward workers, EU07 migrants experienced significant gains in job mobility and job security. Overall, the evidence suggests that removing legal restrictions reshaped firms’ personnel choices and altered migrants’ employment relationships, improving their outside options, bargaining position, and access to more secure jobs.",
     ),
 ]
@@ -380,6 +375,16 @@ WIP = [
     dict(title="Pay, Stability and Quality in the U.S. Childcare Sector", coauthors=["Anna Weber", "Sara Downing"], topic="[Topic]", motif="blocks",
          note="This project is supported by a grant from the Alfred P. Sloan Foundation."),
 ]
+
+
+def _publication_year(paper):
+    year = str(paper["year"]).lower()
+    if year == "forthcoming":
+        return 9999
+    return int(year)
+
+
+PUBLICATIONS.sort(key=_publication_year)
 
 
 # ---------------------------------------------------------------- motifs
@@ -478,7 +483,7 @@ def wip_window():
         panels.append(
             f'<div class="wip-panel" role="tabpanel" id="wip-panel-{i}" aria-labelledby="wip-tab-{i}"{hidden}>'
             f'<div class="wip-art">{motif_svg(w["motif"], i + 7)}</div>'
-            f'<div class="wip-meta"><span class="pill pill-wip">In progress</span><span class="tag is-placeholder">{escape(w["topic"])}</span></div>'
+            f'<div class="wip-meta"></div>'
             f'<h3>{escape(w["title"])}</h3>'
             f'<p class="wip-with">with <span>{escape(", ".join(w["coauthors"][:-1]) + (" and " if len(w["coauthors"]) > 1 else "") + w["coauthors"][-1])}</span></p>'
             f"{note}</div>"
@@ -510,14 +515,6 @@ FIELD_GLYPHS = {
 
 
 def build_home():
-    cards = []
-    for i, p in enumerate(PUBLICATIONS[:3]):
-        cards.append(
-            f'<a class="paper-card reveal" data-delay="{i+1}" href="research.html#{p["id"]}">'
-            f'<span class="venue">{escape(p["venue"])} · {escape(p["year"])}</span>'
-            f'<h3>{escape(p["title"])}</h3>'
-            f'<span class="go">Read more {icon("i-arrow", "icon")}</span></a>'
-        )
     body = f"""
 <section class="hero">
   <div class="wrap">
@@ -525,16 +522,13 @@ def build_home():
       <div>
         <span class="tag">Assistant Professor of Economics · Northwestern University</span>
         <h1><span class="line"><span>Silvia</span></span><span class="line"><span class="accent">Vannutelli</span></span></h1>
-        <p class="hero-statement is-placeholder">[Bio here. Two or three sentences.]</p>
+        <p class="hero-statement">I am an Assistant Professor at Northwestern University Department of Economics, a Faculty Research Fellow at the NBER, a Faculty Affiliate at the CEPR and a Senior Affiliate Fellow at the Stigler Center at Chicago Booth.</p>
+        <p class="hero-statement">I am the 2026-2027 Glenn Campbell and Rita Ricardo-Campbell National Fellow at the Hoover Institution, so you can currently find me in Stanford.</p>
+        <p class="hero-statement">I am an applied economist using original and administrative data and rigorous empirical methods to answer policy-relevant questions. My research seeks to improve policymaking by explaining how institutional design, political incentives, and organizational structures shape government decisions and public-sector performance. I study governments as complex organizations and examine both the forces that lead policymakers to adopt particular policies and the effects of those choices on individuals, firms, and communities.</p>
         <div class="hero-actions">
           <a class="btn" href="research.html">Explore research {icon("i-right")}</a>
           <a class="btn btn-ghost" href="cv.html">View CV {icon("i-right")}</a>
         </div>
-        <ul class="affils" aria-label="Affiliations">
-          <li><strong>NBER</strong> Faculty Research Fellow</li>
-          <li><strong>CEPR</strong> Faculty Affiliate</li>
-          <li><strong>Stigler Center</strong>, Chicago Booth · Senior Affiliate Fellow</li>
-        </ul>
       </div>
       <div>
         <div class="portrait">
@@ -551,47 +545,15 @@ def build_home():
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <span class="tag">What I work on</span>
-        <h2 class="is-placeholder">[Section heading]</h2>
-        <p class="section-note is-placeholder">[One or two sentences on this section.]</p>
-      </div>
-    </div>
-    <div class="fields">
-      <article class="field reveal" data-delay="1">{FIELD_GLYPHS["pe"]}<h3>Political Economy</h3><p class="is-placeholder">[Short description.]</p></article>
-      <article class="field reveal" data-delay="2">{FIELD_GLYPHS["pub"]}<h3>Public Economics</h3><p class="is-placeholder">[Short description.]</p></article>
-      <article class="field reveal" data-delay="3">{FIELD_GLYPHS["org"]}<h3>Organizational Economics</h3><p class="is-placeholder">[Short description.]</p></article>
-    </div>
-  </div>
-</section>
-
 <section class="section" id="work-in-progress">
   <div class="wrap">
     <div class="section-head reveal">
       <div>
-        <span class="tag">Selected work in progress</span>
-        <h2 class="is-placeholder">[Work in progress heading]</h2>
-        <p class="section-note is-placeholder">[One sentence introducing current projects.]</p>
+        <h2>Selected work in progress</h2>
       </div>
       <a class="btn btn-ghost btn-sm" href="research.html#in-progress">All research {icon("i-right")}</a>
     </div>
     {wip_window()}
-  </div>
-</section>
-
-<section class="section">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <span class="tag">Recent publications</span>
-        <h2 class="is-placeholder">[Recent publications heading]</h2>
-      </div>
-      <a class="btn btn-ghost btn-sm" href="research.html#publications">All publications {icon("i-right")}</a>
-    </div>
-    <div class="paper-cards">{''.join(cards)}</div>
   </div>
 </section>
 """
@@ -601,14 +563,15 @@ def build_home():
 def paper_item(p, kind):
     abs_id = f"abs-{p['id']}"
     if kind == "pub":
-        pill = "Accepted" if p["year"] == "Forthcoming" else "Published"
-        side = f'<span class="paper-year">{escape(p["year"])}</span><span class="pill pill-pub">{pill}</span>'
+        side = f'<span class="paper-year">{escape(p["year"])}</span>'
         venue = f'<p class="paper-venue"><em>{escape(p["venue"])}</em></p>'
     else:
-        cls, label = p["status"]
-        side = f'<span class="pill pill-{cls}">{escape(label)}</span>'
-        venue = f'<p class="paper-venue">{p["venue"]}</p>'
-    authors = f'<p class="paper-authors">with {co(p["coauthors"])}</p>' if p["coauthors"] else '<p class="paper-authors">Single-authored</p>'
+        side = ""
+        detail = p["status"]
+        if p.get("venue"):
+            detail = f'{detail} · {p["venue"]}'
+        venue = f'<p class="paper-venue">{escape(detail)}</p>'
+    authors = f'<p class="paper-authors">with {co(p["coauthors"])}</p>' if p["coauthors"] else ""
     links = "".join(chip(h, escape(t), ic) for t, h, ic in p["links"])
     note = f'<p class="paper-note">{p["note"]}</p>' if p.get("note") else ""
     return f"""
@@ -632,7 +595,7 @@ def build_research():
     pubs = "".join(paper_item(p, "pub") for p in PUBLICATIONS)
     wps = "".join(paper_item(p, "wp") for p in WORKING)
     wip_cards = "".join(
-        f'<li class="wip-card reveal"><span class="pill pill-wip is-placeholder">{escape(w["topic"])}</span><h3>{escape(w["title"])}</h3>'
+        f'<li class="wip-card reveal"><h3>{escape(w["title"])}</h3>'
         f'<p>with <span>{escape(", ".join(w["coauthors"]))}</span></p>'
         + (f'<p>{escape(w["note"])}</p>' if w.get("note") else "")
         + "</li>"
@@ -643,7 +606,6 @@ def build_research():
   <div class="wrap">
     <span class="tag">02 · Research</span>
     <h1>Research</h1>
-    <p class="lede is-placeholder">[One or two sentences about the research page.]</p>
   </div>
 </header>
 
@@ -681,26 +643,26 @@ def build_research():
 def build_teaching():
     courses = [
         dict(id="governing-better", code="Masters", inst="Sciences Po · School of Public Affairs", title="Governing Better: A Political Economy of the State",
-             summary="[Short course description.]",
+             summary="This is a course about how to improve the functioning of government by understanding the interplay between politics, policy, and public administration.",
              full=[
                  "This is a course about how to improve the functioning of government by understanding the interplay between politics, policy, and public administration. It explores the deep organizational and institutional challenges that shape how democracies work — or fail to. From how we elect politicians to how we recruit bureaucrats, from the design of federal systems to the execution of public procurement, the course investigates why good policies so often fall short and what can be done about it.",
                  "Drawing on political economy theory and real-world examples, the course helps students develop a practical understanding of how states function — and malfunction — in the face of political constraints, bureaucratic complexity, and fiscal limits. We examine foundational models such as the median voter theorem and citizen-candidate framework, as well as more applied challenges like digital governance, AI in the public sector, and policy learning.",
                  "The course is interactive and applied. Students engage with key academic concepts and test them against contemporary public sector problems. They learn to use key methodological tools, such as the Smart Policy Design and Implementation (SPDI) Framework. Guest lectures from policymakers and practitioners offer first-hand perspectives. Through group presentations and a final project simulating stakeholder persuasion, students are encouraged to think like reformers — crafting policy proposals that are both politically feasible and administratively sound.",
              ]),
         dict(id="econ-436", code="ECON 436", inst="Northwestern · Graduate", title="Graduate Public Economics",
-             summary="[Short course description.]",
+             summary="This course aims at giving a broad overview of some of the most important topics in public finance, with a focus on recent research as well as areas that have been underlooked for a while and could be revived.",
              full=[
                  "This course aims at giving a broad overview of some of the most important topics in public finance, with a focus on recent research as well as areas that have been underlooked for a while and could be revived. We will start with a general overview of the role of government in the economy, and think about modern methods to compare the welfare impacts of different policy interventions. We will then move to think about how governments finance themselves through taxation, covering issues related to how should tax systems be designed, how individuals and firms respond to taxation and who bears the cost of tax changes, and how tax evasion affects the optimal design of taxes and transfers and how can governments fight tax evasion.",
                  "We will then think about the structure of governments, explore issues of local public finance, analyze why some policies in many countries are carried out by local governments, and how to design and evaluate place-based interventions. In the second half of the course, we will think more about government spending, exploring mostly issues related to the economics of education. We will also think about problems related to the assessment of public goods and public service provision, such as the difficulty of measuring the performance and quality of public goods. Finally, we will devote time thinking about the personnel economics of the public sector, meaning the role played by the quality of individuals who work as public sector workers and how to attract and retain talent in the public sector.",
              ]),
         dict(id="econ-337", code="ECON 337", inst="Northwestern · Undergraduate", title="Economics of State and Local Governments",
-             summary="[Short course description.]",
+             summary="State and local governments play an essential role in citizens’ day-to-day life, as they decide and deliver key public goods and services, such as education, transportation, health and welfare.",
              full=[
                  "State and local governments play an essential role in citizens’ day-to-day life, as they decide and deliver key public goods and services, such as education, transportation, health and welfare. This course uses applied tools of microeconomics and simple data analysis to acquaint students with various aspects of the subnational government sector, including expenditure, financing, and policy issues.",
                  "We start by reviewing under what situation government provision is desirable. We then study how levels of state goods and services are determined, and what are the main sources of revenues through which these expenditures are financed, including taxes and transfers from higher levels of government. Students will also learn the importance of political considerations and the role of state and local politics in influencing local government decisions. The course will end with policy analysis and applications. The main focus is going to be on the United States but we are also going to explore examples and issues faced by local governments around the world.",
              ]),
         dict(id="icpsr", code="ICPSR 2020", inst="Summer Program · Online", title="Modern Difference-in-Differences Designs",
-             summary="[Short course description.]",
+             summary="This is an intensive summer course, the main instructor was John Poe. The course was offered online.",
              full=[
                  "This is an intensive summer course offered online through the " + ext("https://www.icpsr.umich.edu/sites/icpsr/sumprog", "ICPSR Summer Program") + "; the main instructor was John Poe. I attended the entire course, taught some of the sessions and provided virtual office hours and live assistance in answering questions. I also prepared some of the teaching materials.",
              ],
@@ -719,7 +681,7 @@ def build_teaching():
   </div>
   <div>
     <h3>{escape(c['title'])}</h3>
-    <p class="summary is-placeholder">{escape(c['summary'])}</p>
+    <p class="summary">{escape(c['summary'])}</p>
     <div class="paper-actions">
       {links}
       <button type="button" class="abs-toggle" data-expand aria-expanded="false" aria-controls="{did}" data-open-label="Hide description">{icon("i-plus")}<span class="lbl">Full description</span></button>
@@ -732,7 +694,6 @@ def build_teaching():
   <div class="wrap">
     <span class="tag">03 · Teaching</span>
     <h1>Teaching</h1>
-    <p class="lede is-placeholder">[One or two sentences about teaching.]</p>
   </div>
 </header>
 
@@ -748,7 +709,7 @@ def build_teaching():
       <div>
         <span class="tag">Talk · Methods</span>
         <h3>Recent Advances in DiD Methods</h3>
-        <p class="is-placeholder">[Short description of this talk.]</p>
+        <p>Here you can find the slides and the video of a talk I gave about Recent Advances in DiD methods.</p>
       </div>
       <div class="resource-actions">
         <a class="btn" href="{escape(safe_href('https://www.dropbox.com/s/r9176vxt6yj40dq/zoom_1.mp4?dl=0'))}" target="_blank" rel="noopener noreferrer">{icon("i-play")}Watch lecture</a>
@@ -767,7 +728,6 @@ def build_wie():
   <div class="wrap">
     <span class="tag">04 · Community</span>
     <h1>Women in Economics</h1>
-    <p class="lede is-placeholder">[One or two sentences about this page.]</p>
   </div>
 </header>
 
@@ -915,7 +875,6 @@ def build_cv():
   <div class="wrap">
     <span class="tag">05 · Curriculum Vitae</span>
     <h1>CV</h1>
-    <p class="lede is-placeholder">[One sentence about the CV.]</p>
     <div class="cv-bar reveal">
       <div><strong>Full CV (PDF)</strong><span>Updated April 2026</span></div>
       <a class="btn" href="{escape(safe_href(CV_URL))}" target="_blank" rel="noopener noreferrer">{icon("i-download")}Download CV</a>
@@ -934,7 +893,7 @@ def build_cv():
           <ul class="cv-tags"><li>Political Economy</li><li>Public Economics</li><li>Organizational Economics</li></ul>
         </section>
         <section class="cv-block reveal" id="research"><h2>Research</h2>
-          <p class="cv-prose is-placeholder">[Short note pointing to the research page.]</p>
+          <p class="cv-prose"><a href="research.html">Research</a></p>
           <div class="paper-actions">
             <a class="chip" href="research.html#publications">Publications{icon("i-right")}</a>
             <a class="chip" href="research.html#working-papers">Working papers{icon("i-right")}</a>
@@ -947,7 +906,7 @@ def build_cv():
           <p class="cv-sub">Conference organizing</p>{organizing}
           <p class="cv-sub">Seminars &amp; departmental service</p>{seminars}
         </section>
-        <section class="cv-block reveal" id="students"><h2>Student advising</h2><p class="cv-prose is-placeholder">[Note about how placements are listed.]</p>{students}</section>
+        <section class="cv-block reveal" id="students"><h2>Student advising</h2>{students}</section>
         <section class="cv-block reveal" id="refereeing"><h2>Referee for</h2><ul class="cv-tags">{ref_tags}</ul></section>
         <section class="cv-block reveal" id="languages"><h2>Languages</h2>
           <ul class="cv-tags"><li>Italian · native</li><li>English · fluent</li><li>French · intermediate</li><li>Spanish · beginner</li></ul>
