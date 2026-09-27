@@ -1665,15 +1665,41 @@ html:not(.js) .abs-toggle { display: none; }
 .hero::before, .page-head::before { display: none; }
 
 .field-glyph, .wip-art { display: none; }
-.fields { gap: 0; }
+.fields {
+  display: block;
+}
 .field {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.5fr);
+  gap: 28px;
+  align-items: baseline;
   background: transparent;
   border: 0;
   border-top: 1px solid var(--line);
   border-radius: 0;
-  padding: 22px 22px 8px 0;
+  padding: 26px 0 22px;
 }
-.fields .field + .field { border-left: 1px solid var(--line); padding-left: 22px; }
+.fields .field + .field { border-left: 0; padding-left: 0; }
+.field h3 {
+  font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+.field p { margin: 0; max-width: 46ch; }
+
+.paper-year, .wip-count, .nav .num { font-variant-numeric: tabular-nums; }
+
+.btn:active { transform: scale(0.98); }
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
 
 .paper-cards {
   display: block;
@@ -1804,6 +1830,7 @@ html:not(.js) .abs-toggle { display: none; }
 
 @media (max-width: 860px) {
   .fields .field + .field { border-left: 0; padding-left: 0; }
+  .field { grid-template-columns: 1fr; gap: 8px; }
   .portrait-badge { left: auto; }
 }
 
