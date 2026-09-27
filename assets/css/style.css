@@ -1707,6 +1707,11 @@ html:not(.js) .abs-toggle { display: none; }
 
 .paper-year, .wip-count, .nav .num { font-variant-numeric: tabular-nums; }
 
+.is-placeholder {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--muted);
+}
 .btn:active { transform: scale(0.98); }
 body::after { display: none; }
 

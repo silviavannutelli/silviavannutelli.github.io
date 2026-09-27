@@ -111,7 +111,7 @@ def contact_dialog():
     <button type="button" class="icon-btn cd-close" data-contact-close aria-label="Close contact window">{icon("i-close")}</button>
     <span class="tag tag-sky">Get in touch</span>
     <h2 id="contact-title">Contact</h2>
-    <p>Email is the best way to reach me. This year I am based at Stanford.</p>
+    <p class="is-placeholder">[How to reach me.]</p>
   </div>
   <div class="cd-body">
     <div class="cd-email">
@@ -147,8 +147,8 @@ def footer():
   <div class="wrap">
     <div class="footer-grid">
       <div>
-        <h2>Questions about a paper or project?</h2>
-        <p>I am always happy to hear from students, researchers, and policymakers.</p>
+        <h2 class="is-placeholder">[Footer heading]</h2>
+        <p class="is-placeholder">[Footer note.]</p>
       </div>
       <button type="button" class="btn btn-flare" data-contact aria-haspopup="dialog">{icon("i-mail")}Get in touch</button>
     </div>
@@ -373,13 +373,13 @@ WORKING = [
 ]
 
 WIP = [
-    dict(title="The Value of Information for Regulatory Enforcement", coauthors=["Elliott Ash", "Maddalena Ronchi", "Elena Stella"], topic="Regulation", motif="dots"),
-    dict(title="Improving Governance through Citizen Feedback Technologies: Evidence from Pakistan", coauthors=["Sultan Mehmood", "Shaheen Naseer"], topic="Accountability", motif="ripples"),
-    dict(title="The Political Economy of Environmental Policy", coauthors=["Reka Juhasz"], topic="Environment", motif="waves"),
-    dict(title="Managing Tax Collection", coauthors=["Simone Paci", "Giacomo Marcolin"], topic="Taxation", motif="bars"),
-    dict(title="Outsourcing Government in the U.S.", coauthors=["Guo Xu", "Charles Hanzel"], topic="State capacity", motif="nested"),
-    dict(title="Managers and the Organization of Remote Work", coauthors=["Erika Deserranno", "Maria De Paola"], topic="Public personnel", motif="network"),
-    dict(title="Pay, Stability and Quality in the U.S. Childcare Sector", coauthors=["Anna Weber", "Sara Downing"], topic="Public services", motif="blocks",
+    dict(title="The Value of Information for Regulatory Enforcement", coauthors=["Elliott Ash", "Maddalena Ronchi", "Elena Stella"], topic="[Topic]", motif="dots"),
+    dict(title="Improving Governance through Citizen Feedback Technologies: Evidence from Pakistan", coauthors=["Sultan Mehmood", "Shaheen Naseer"], topic="[Topic]", motif="ripples"),
+    dict(title="The Political Economy of Environmental Policy", coauthors=["Reka Juhasz"], topic="[Topic]", motif="waves"),
+    dict(title="Managing Tax Collection", coauthors=["Simone Paci", "Giacomo Marcolin"], topic="[Topic]", motif="bars"),
+    dict(title="Outsourcing Government in the U.S.", coauthors=["Guo Xu", "Charles Hanzel"], topic="[Topic]", motif="nested"),
+    dict(title="Managers and the Organization of Remote Work", coauthors=["Erika Deserranno", "Maria De Paola"], topic="[Topic]", motif="network"),
+    dict(title="Pay, Stability and Quality in the U.S. Childcare Sector", coauthors=["Anna Weber", "Sara Downing"], topic="[Topic]", motif="blocks",
          note="This project is supported by a grant from the Alfred P. Sloan Foundation."),
 ]
 
@@ -480,7 +480,7 @@ def wip_window():
         panels.append(
             f'<div class="wip-panel" role="tabpanel" id="wip-panel-{i}" aria-labelledby="wip-tab-{i}"{hidden}>'
             f'<div class="wip-art">{motif_svg(w["motif"], i + 7)}</div>'
-            f'<div class="wip-meta"><span class="pill pill-wip">In progress</span><span class="tag">{escape(w["topic"])}</span></div>'
+            f'<div class="wip-meta"><span class="pill pill-wip">In progress</span><span class="tag is-placeholder">{escape(w["topic"])}</span></div>'
             f'<h3>{escape(w["title"])}</h3>'
             f'<p class="wip-with">with <span>{escape(", ".join(w["coauthors"][:-1]) + (" and " if len(w["coauthors"]) > 1 else "") + w["coauthors"][-1])}</span></p>'
             f"{note}</div>"
@@ -527,7 +527,7 @@ def build_home():
       <div>
         <span class="tag">Assistant Professor of Economics · Northwestern University</span>
         <h1><span class="line"><span>Silvia</span></span><span class="line"><span class="accent">Vannutelli</span></span></h1>
-        <p class="hero-statement">I am an applied economist. I study <strong>governments as complex organizations</strong>: how institutional design, political incentives, and organizational structures shape government decisions and public-sector performance.</p>
+        <p class="hero-statement is-placeholder">[Bio here. Two or three sentences.]</p>
         <div class="hero-actions">
           <a class="btn" href="research.html">Explore research {icon("i-right")}</a>
           <a class="btn btn-ghost" href="cv.html">View CV {icon("i-right")}</a>
@@ -558,14 +558,14 @@ def build_home():
     <div class="section-head reveal">
       <div>
         <span class="tag">What I work on</span>
-        <h2>Original data, rigorous methods, policy questions</h2>
-        <p class="section-note">I examine both the forces that lead policymakers to adopt particular policies and the effects of those choices on individuals, firms, and communities.</p>
+        <h2 class="is-placeholder">[Section heading]</h2>
+        <p class="section-note is-placeholder">[One or two sentences on this section.]</p>
       </div>
     </div>
     <div class="fields">
-      <article class="field reveal" data-delay="1">{FIELD_GLYPHS["pe"]}<h3>Political Economy</h3><p>Accountability, political selection, and the incentives behind policy design.</p></article>
-      <article class="field reveal" data-delay="2">{FIELD_GLYPHS["pub"]}<h3>Public Economics</h3><p>Taxes, transfers, audits, and how governments raise and spend money.</p></article>
-      <article class="field reveal" data-delay="3">{FIELD_GLYPHS["org"]}<h3>Organizational Economics</h3><p>Monitoring, discretion, and personnel inside public organizations.</p></article>
+      <article class="field reveal" data-delay="1">{FIELD_GLYPHS["pe"]}<h3>Political Economy</h3><p class="is-placeholder">[Short description.]</p></article>
+      <article class="field reveal" data-delay="2">{FIELD_GLYPHS["pub"]}<h3>Public Economics</h3><p class="is-placeholder">[Short description.]</p></article>
+      <article class="field reveal" data-delay="3">{FIELD_GLYPHS["org"]}<h3>Organizational Economics</h3><p class="is-placeholder">[Short description.]</p></article>
     </div>
   </div>
 </section>
@@ -575,8 +575,8 @@ def build_home():
     <div class="section-head reveal">
       <div>
         <span class="tag">Selected work in progress</span>
-        <h2>On the desk right now</h2>
-        <p class="section-note">New projects on regulation, citizen feedback, taxation, and public services. Pick one to take a closer look.</p>
+        <h2 class="is-placeholder">[Work in progress heading]</h2>
+        <p class="section-note is-placeholder">[One sentence introducing current projects.]</p>
       </div>
       <a class="btn btn-ghost btn-sm" href="research.html#in-progress">All research {icon("i-right")}</a>
     </div>
@@ -589,7 +589,7 @@ def build_home():
     <div class="section-head reveal">
       <div>
         <span class="tag">Recent publications</span>
-        <h2>Latest in print</h2>
+        <h2 class="is-placeholder">[Recent publications heading]</h2>
       </div>
       <a class="btn btn-ghost btn-sm" href="research.html#publications">All publications {icon("i-right")}</a>
     </div>
@@ -597,7 +597,7 @@ def build_home():
   </div>
 </section>
 """
-    page("index.html", None, "Silvia Vannutelli is an Assistant Professor of Economics at Northwestern University studying political economy, public economics, and organizational economics.", body)
+    page("index.html", None, "Silvia Vannutelli, Assistant Professor of Economics, Northwestern University.", body)
 
 
 def paper_item(p, kind):
@@ -634,7 +634,7 @@ def build_research():
     pubs = "".join(paper_item(p, "pub") for p in PUBLICATIONS)
     wps = "".join(paper_item(p, "wp") for p in WORKING)
     wip_cards = "".join(
-        f'<li class="wip-card reveal"><span class="pill pill-wip">{escape(w["topic"])}</span><h3>{escape(w["title"])}</h3>'
+        f'<li class="wip-card reveal"><span class="pill pill-wip is-placeholder">{escape(w["topic"])}</span><h3>{escape(w["title"])}</h3>'
         f'<p>with <span>{escape(", ".join(w["coauthors"]))}</span></p>'
         + (f'<p>{escape(w["note"])}</p>' if w.get("note") else "")
         + "</li>"
@@ -645,7 +645,7 @@ def build_research():
   <div class="wrap">
     <span class="tag">02 · Research</span>
     <h1>Research</h1>
-    <p class="lede">Publications, working papers, and projects in progress on how governments decide, and what their choices do. Open any abstract for the full summary.</p>
+    <p class="lede is-placeholder">[One or two sentences about the research page.]</p>
   </div>
 </header>
 
@@ -677,32 +677,32 @@ def build_research():
   </section>
 </div>
 """
-    page("research.html", "Research", "Publications, working papers, and work in progress by Silvia Vannutelli on political economy, public finance, and the organization of government.", body)
+    page("research.html", "Research", "Research by Silvia Vannutelli.", body)
 
 
 def build_teaching():
     courses = [
         dict(id="governing-better", code="Masters", inst="Sciences Po · School of Public Affairs", title="Governing Better: A Political Economy of the State",
-             summary="How to improve the functioning of government by understanding the interplay between politics, policy, and public administration.",
+             summary="[Short course description.]",
              full=[
                  "This is a course about how to improve the functioning of government by understanding the interplay between politics, policy, and public administration. It explores the deep organizational and institutional challenges that shape how democracies work — or fail to. From how we elect politicians to how we recruit bureaucrats, from the design of federal systems to the execution of public procurement, the course investigates why good policies so often fall short and what can be done about it.",
                  "Drawing on political economy theory and real-world examples, the course helps students develop a practical understanding of how states function — and malfunction — in the face of political constraints, bureaucratic complexity, and fiscal limits. We examine foundational models such as the median voter theorem and citizen-candidate framework, as well as more applied challenges like digital governance, AI in the public sector, and policy learning.",
                  "The course is interactive and applied. Students engage with key academic concepts and test them against contemporary public sector problems. They learn to use key methodological tools, such as the Smart Policy Design and Implementation (SPDI) Framework. Guest lectures from policymakers and practitioners offer first-hand perspectives. Through group presentations and a final project simulating stakeholder persuasion, students are encouraged to think like reformers — crafting policy proposals that are both politically feasible and administratively sound.",
              ]),
         dict(id="econ-436", code="ECON 436", inst="Northwestern · Graduate", title="Graduate Public Economics",
-             summary="A broad overview of the most important topics in public finance, with a focus on recent research and under-explored areas worth reviving.",
+             summary="[Short course description.]",
              full=[
                  "This course aims at giving a broad overview of some of the most important topics in public finance, with a focus on recent research as well as areas that have been underlooked for a while and could be revived. We will start with a general overview of the role of government in the economy, and think about modern methods to compare the welfare impacts of different policy interventions. We will then move to think about how governments finance themselves through taxation, covering issues related to how should tax systems be designed, how individuals and firms respond to taxation and who bears the cost of tax changes, and how tax evasion affects the optimal design of taxes and transfers and how can governments fight tax evasion.",
                  "We will then think about the structure of governments, explore issues of local public finance, analyze why some policies in many countries are carried out by local governments, and how to design and evaluate place-based interventions. In the second half of the course, we will think more about government spending, exploring mostly issues related to the economics of education. We will also think about problems related to the assessment of public goods and public service provision, such as the difficulty of measuring the performance and quality of public goods. Finally, we will devote time thinking about the personnel economics of the public sector, meaning the role played by the quality of individuals who work as public sector workers and how to attract and retain talent in the public sector.",
              ]),
         dict(id="econ-337", code="ECON 337", inst="Northwestern · Undergraduate", title="Economics of State and Local Governments",
-             summary="Applied microeconomics and simple data analysis to understand how subnational governments spend, raise revenue, and make policy.",
+             summary="[Short course description.]",
              full=[
                  "State and local governments play an essential role in citizens’ day-to-day life, as they decide and deliver key public goods and services, such as education, transportation, health and welfare. This course uses applied tools of microeconomics and simple data analysis to acquaint students with various aspects of the subnational government sector, including expenditure, financing, and policy issues.",
                  "We start by reviewing under what situation government provision is desirable. We then study how levels of state goods and services are determined, and what are the main sources of revenues through which these expenditures are financed, including taxes and transfers from higher levels of government. Students will also learn the importance of political considerations and the role of state and local politics in influencing local government decisions. The course will end with policy analysis and applications. The main focus is going to be on the United States but we are also going to explore examples and issues faced by local governments around the world.",
              ]),
         dict(id="icpsr", code="ICPSR 2020", inst="Summer Program · Online", title="Modern Difference-in-Differences Designs",
-             summary="An intensive summer course led by John Poe. I taught some of the sessions, held virtual office hours, and prepared teaching materials.",
+             summary="[Short course description.]",
              full=[
                  "This is an intensive summer course offered online through the " + ext("https://www.icpsr.umich.edu/sites/icpsr/sumprog", "ICPSR Summer Program") + "; the main instructor was John Poe. I attended the entire course, taught some of the sessions and provided virtual office hours and live assistance in answering questions. I also prepared some of the teaching materials.",
              ],
@@ -721,7 +721,7 @@ def build_teaching():
   </div>
   <div>
     <h3>{escape(c['title'])}</h3>
-    <p class="summary">{escape(c['summary'])}</p>
+    <p class="summary is-placeholder">{escape(c['summary'])}</p>
     <div class="paper-actions">
       {links}
       <button type="button" class="abs-toggle" data-expand aria-expanded="false" aria-controls="{did}" data-open-label="Hide description">{icon("i-plus")}<span class="lbl">Full description</span></button>
@@ -734,7 +734,7 @@ def build_teaching():
   <div class="wrap">
     <span class="tag">03 · Teaching</span>
     <h1>Teaching</h1>
-    <p class="lede">Courses on public economics, state and local government, and the political economy of the state, from undergraduate lectures to graduate seminars.</p>
+    <p class="lede is-placeholder">[One or two sentences about teaching.]</p>
   </div>
 </header>
 
@@ -750,7 +750,7 @@ def build_teaching():
       <div>
         <span class="tag">Talk · Methods</span>
         <h3>Recent Advances in DiD Methods</h3>
-        <p>Slides and the recorded video of a talk I gave to the Boston University Summer Empirical Micro Reading Group.</p>
+        <p class="is-placeholder">[Short description of this talk.]</p>
       </div>
       <div class="resource-actions">
         <a class="btn" href="{escape(safe_href('https://www.dropbox.com/s/r9176vxt6yj40dq/zoom_1.mp4?dl=0'))}" target="_blank" rel="noopener noreferrer">{icon("i-play")}Watch lecture</a>
@@ -760,7 +760,7 @@ def build_teaching():
   </div>
 </section>
 """
-    page("teaching.html", "Teaching", "Courses taught by Silvia Vannutelli at Northwestern University, Sciences Po, and the ICPSR Summer Program.", body)
+    page("teaching.html", "Teaching", "Teaching by Silvia Vannutelli.", body)
 
 
 def build_wie():
@@ -769,7 +769,7 @@ def build_wie():
   <div class="wrap">
     <span class="tag">04 · Community</span>
     <h1>Women in Economics</h1>
-    <p class="lede">Mentoring, organizing, and research on the status of women in the economics profession, from Boston University to Northwestern.</p>
+    <p class="lede is-placeholder">[One or two sentences about this page.]</p>
   </div>
 </header>
 
@@ -823,7 +823,7 @@ def build_wie():
   </div>
 </section>
 """
-    page("women-in-economics.html", "Women in Economics", "Silvia Vannutelli's work supporting women in economics at Northwestern and Boston University.", body)
+    page("women-in-economics.html", "Women in Economics", "Women in Economics, Silvia Vannutelli.", body)
 
 
 def rows(items):
@@ -917,7 +917,7 @@ def build_cv():
   <div class="wrap">
     <span class="tag">05 · Curriculum Vitae</span>
     <h1>CV</h1>
-    <p class="lede">Positions, education, grants, teaching, and service at a glance. The PDF has the complete record, including presentations.</p>
+    <p class="lede is-placeholder">[One sentence about the CV.]</p>
     <div class="cv-bar reveal">
       <div><strong>Full CV (PDF)</strong><span>Updated April 2026</span></div>
       <a class="btn" href="{escape(safe_href(CV_URL))}" target="_blank" rel="noopener noreferrer">{icon("i-download")}Download CV</a>
@@ -936,7 +936,7 @@ def build_cv():
           <ul class="cv-tags"><li>Political Economy</li><li>Public Economics</li><li>Organizational Economics</li></ul>
         </section>
         <section class="cv-block reveal" id="research"><h2>Research</h2>
-          <p class="cv-prose">{len(PUBLICATIONS)} publications, {len(WORKING)} working papers, and several projects in progress. Every paper, with abstracts and links, is listed on the research page.</p>
+          <p class="cv-prose is-placeholder">[Short note pointing to the research page.]</p>
           <div class="paper-actions">
             <a class="chip" href="research.html#publications">Publications{icon("i-right")}</a>
             <a class="chip" href="research.html#working-papers">Working papers{icon("i-right")}</a>
@@ -949,7 +949,7 @@ def build_cv():
           <p class="cv-sub">Conference organizing</p>{organizing}
           <p class="cv-sub">Seminars &amp; departmental service</p>{seminars}
         </section>
-        <section class="cv-block reveal" id="students"><h2>Student advising</h2><p class="cv-prose">First placement listed for each student.</p>{students}</section>
+        <section class="cv-block reveal" id="students"><h2>Student advising</h2><p class="cv-prose is-placeholder">[Note about how placements are listed.]</p>{students}</section>
         <section class="cv-block reveal" id="refereeing"><h2>Referee for</h2><ul class="cv-tags">{ref_tags}</ul></section>
         <section class="cv-block reveal" id="languages"><h2>Languages</h2>
           <ul class="cv-tags"><li>Italian · native</li><li>English · fluent</li><li>French · intermediate</li><li>Spanish · beginner</li></ul>
@@ -959,7 +959,7 @@ def build_cv():
   </div>
 </section>
 """
-    page("cv.html", "CV", "Curriculum vitae of Silvia Vannutelli, Assistant Professor of Economics at Northwestern University.", body)
+    page("cv.html", "CV", "Curriculum vitae of Silvia Vannutelli.", body)
 
 
 def build_404():
