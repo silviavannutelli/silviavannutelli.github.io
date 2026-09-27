@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 """Generates the static HTML pages for the Silvia Vannutelli site. Run: python3 tools/build.py"""
+import base64
+import hashlib
 import math
 import os
 import random
+import re
 from html import escape
+from urllib.parse import urlparse
 
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,16 +24,56 @@ NAV = [
 ]
 
 
+BOOT = (
+    "(function(d){if(window.top!==window.self){d.classList.add('is-framed');return;}"
+    "d.classList.add('js');try{if(sessionStorage.getItem('sv-intro'))d.classList.add('no-intro');"
+    "else sessionStorage.setItem('sv-intro','1');}catch(e){}})(document.documentElement);"
+)
+BOOT_HASH = base64.b64encode(hashlib.sha256(BOOT.encode("utf-8")).digest()).decode("ascii")
+CSP = (
+    "default-src 'self'; "
+    f"script-src 'self' 'sha256-{BOOT_HASH}'; "
+    "style-src 'self'; "
+    "img-src 'self' data:; "
+    "font-src 'self'; "
+    "connect-src 'self'; "
+    "object-src 'none'; "
+    "base-uri 'self'; "
+    "form-action 'none'; "
+    "frame-src 'none'; "
+    "worker-src 'none'"
+)
+
+
+def safe_href(href):
+    href = (href or "").strip()
+    lowered = href.lower()
+    if lowered.startswith(("javascript:", "data:", "vbscript:", "file:")):
+        raise SystemExit("refusing unsafe URL")
+    parsed = urlparse(href)
+    if parsed.scheme == "":
+        if href.startswith("//") or "\\" in href:
+            raise SystemExit("refusing protocol-relative URL")
+        return href
+    if parsed.scheme in ("https", "http", "mailto"):
+        return href
+    raise SystemExit("refusing URL scheme " + parsed.scheme)
+
+
 def icon(name, cls="icon"):
+    if not re.fullmatch(r"i-[a-z0-9-]+", name or ""):
+        raise SystemExit("refusing icon name")
     return f'<svg class="{cls}" aria-hidden="true"><use href="assets/img/icons.svg#{name}"/></svg>'
 
 
 def ext(href, text, cls="link"):
-    return f'<a class="{cls}" href="{escape(href)}" target="_blank" rel="noopener">{text}</a>'
+    href = safe_href(href)
+    return f'<a class="{cls}" href="{escape(href)}" target="_blank" rel="noopener noreferrer">{text}</a>'
 
 
 def chip(href, text, ic="i-arrow"):
-    return f'<a class="chip" href="{escape(href)}" target="_blank" rel="noopener">{text}{icon(ic)}</a>'
+    href = safe_href(href)
+    return f'<a class="chip" href="{escape(href)}" target="_blank" rel="noopener noreferrer">{text}{icon(ic)}</a>'
 
 
 def brand():
@@ -55,7 +99,7 @@ def actions():
     return (
         '<div class="rail-actions">'
         f'<button type="button" class="btn" data-contact aria-haspopup="dialog">{icon("i-mail")}Contact</button>'
-        f'<a class="btn btn-ghost" href="{escape(CV_URL)}" target="_blank" rel="noopener">{icon("i-download")}Download CV</a>'
+        f'<a class="btn btn-ghost" href="{escape(safe_href(CV_URL))}" target="_blank" rel="noopener noreferrer">{icon("i-download")}Download CV</a>'
         "</div>"
     )
 
@@ -65,14 +109,14 @@ def contact_dialog():
 <dialog class="contact-dialog" id="contact" aria-labelledby="contact-title">
   <div class="cd-head">
     <button type="button" class="icon-btn cd-close" data-contact-close aria-label="Close contact window">{icon("i-close")}</button>
-    <span class="tag" style="color:var(--sky)">Get in touch</span>
+    <span class="tag tag-sky">Get in touch</span>
     <h2 id="contact-title">Contact</h2>
     <p>Email is the best way to reach me. This year I am based at Stanford.</p>
   </div>
   <div class="cd-body">
     <div class="cd-email">
       {icon("i-mail")}
-      <a href="mailto:{EMAIL}">{EMAIL}</a>
+      <a href="{escape(safe_href('mailto:' + EMAIL))}">{EMAIL}</a>
       <button type="button" class="icon-btn" data-copy="{EMAIL}" aria-label="Copy email address">{icon("i-copy")}</button>
     </div>
     <div class="cd-addresses">
@@ -90,8 +134,8 @@ def contact_dialog():
       </address>
     </div>
     <div class="cd-social">
-      <a class="btn btn-sm btn-flare" href="mailto:{EMAIL}">{icon("i-mail")}Send an email</a>
-      <a class="btn btn-sm btn-ghost" href="{X_URL}" target="_blank" rel="noopener">{icon("i-x")}@silviavannutell</a>
+      <a class="btn btn-sm btn-flare" href="{escape(safe_href('mailto:' + EMAIL))}">{icon("i-mail")}Send an email</a>
+      <a class="btn btn-sm btn-ghost" href="{escape(safe_href(X_URL))}" target="_blank" rel="noopener noreferrer">{icon("i-x")}@silviavannutell</a>
     </div>
   </div>
 </dialog>"""
@@ -127,16 +171,15 @@ def page(filename, title, description, body, active=None):
 <title>{escape(full_title)}</title>
 <meta name="description" content="{escape(description)}">
 <meta name="theme-color" content="#1D5BD6">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="{CSP}">
 <meta property="og:title" content="{escape(full_title)}">
 <meta property="og:description" content="{escape(description)}">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/img/headshot.jpg">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@500;600&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
-<script>(function(d){{d.classList.add('js');try{{if(sessionStorage.getItem('sv-intro'))d.classList.add('no-intro');else sessionStorage.setItem('sv-intro','1');}}catch(e){{}}}})(document.documentElement);</script>
+<script>{BOOT}</script>
 <script src="assets/js/site.js" defer></script>
 </head>
 <body>
@@ -170,6 +213,19 @@ def page(filename, title, description, body, active=None):
 </body>
 </html>
 """
+    if "fonts.googleapis.com" in html or "fonts.gstatic.com" in html:
+        raise SystemExit("third-party font host left in " + filename)
+    for match in re.finditer(r'''(?:href|src)\s*=\s*["']([^"']+)''', html):
+        safe_href(match.group(1).replace("&amp;", "&"))
+    scripts = re.findall(r"<script\b([^>]*)>(.*?)</script>", html, re.S)
+    for attrs, body in scripts:
+        if "src=" in attrs:
+            if "assets/js/site.js" not in attrs:
+                raise SystemExit("unexpected script in " + filename)
+        elif body != BOOT:
+            raise SystemExit("unexpected inline script in " + filename)
+    if re.search(r"\sstyle\s*=", html):
+        raise SystemExit("inline style attribute in " + filename)
     with open(os.path.join(OUT, filename), "w", encoding="utf-8") as f:
         f.write(html)
 
@@ -561,7 +617,7 @@ def paper_item(p, kind):
 <li class="paper reveal" id="{p['id']}">
   <div class="paper-side">{side}</div>
   <div>
-    <h3 class="paper-title"><a href="{escape(p['href'])}" target="_blank" rel="noopener">{escape(p['title'])}</a></h3>
+    <h3 class="paper-title"><a href="{escape(safe_href(p['href']))}" target="_blank" rel="noopener noreferrer">{escape(p['title'])}</a></h3>
     {authors}
     {venue}
     <div class="paper-actions">
@@ -615,7 +671,7 @@ def build_research():
     <ul class="papers">{wps}</ul>
   </section>
 
-  <section class="group" id="in-progress" data-group="in-progress" aria-labelledby="h-wip" style="padding-bottom:72px">
+  <section class="group group-last" id="in-progress" data-group="in-progress" aria-labelledby="h-wip">
     <div class="group-title"><h2 id="h-wip">Selected work in progress</h2><span class="tag">{len(WIP)} projects</span></div>
     <ul class="wip-grid">{wip_cards}</ul>
   </section>
@@ -697,8 +753,8 @@ def build_teaching():
         <p>Slides and the recorded video of a talk I gave to the Boston University Summer Empirical Micro Reading Group.</p>
       </div>
       <div class="resource-actions">
-        <a class="btn" href="https://www.dropbox.com/s/r9176vxt6yj40dq/zoom_1.mp4?dl=0" target="_blank" rel="noopener">{icon("i-play")}Watch lecture</a>
-        <a class="btn btn-ghost" href="https://www.dropbox.com/s/ida06skzgj9xp6h/Vannutelli_DID_presentation.pdf?dl=0" target="_blank" rel="noopener">{icon("i-file")}Slides</a>
+        <a class="btn" href="{escape(safe_href('https://www.dropbox.com/s/r9176vxt6yj40dq/zoom_1.mp4?dl=0'))}" target="_blank" rel="noopener noreferrer">{icon("i-play")}Watch lecture</a>
+        <a class="btn btn-ghost" href="{escape(safe_href('https://www.dropbox.com/s/ida06skzgj9xp6h/Vannutelli_DID_presentation.pdf?dl=0'))}" target="_blank" rel="noopener noreferrer">{icon("i-file")}Slides</a>
       </div>
     </div>
   </div>
@@ -750,7 +806,7 @@ def build_wie():
           <p>I served as Co-Chair of BU WEOrg, a graduate student-led organization dedicated to the advancement of women in all stages of economic research.</p>
           <div class="paper-actions">
             {chip("https://www.bu.edu/econ/students/studentorgs/weorg/", "BU WEOrg website")}
-            <a class="chip" href="mailto:weorg@bu.edu">weorg@bu.edu{icon("i-mail")}</a>
+            <a class="chip" href="{escape(safe_href('mailto:weorg@bu.edu'))}">weorg@bu.edu{icon("i-mail")}</a>
           </div>
         </div>
       </li>
@@ -864,7 +920,7 @@ def build_cv():
     <p class="lede">Positions, education, grants, teaching, and service at a glance. The PDF has the complete record, including presentations.</p>
     <div class="cv-bar reveal">
       <div><strong>Full CV (PDF)</strong><span>Updated April 2026</span></div>
-      <a class="btn" href="{escape(CV_URL)}" target="_blank" rel="noopener">{icon("i-download")}Download CV</a>
+      <a class="btn" href="{escape(safe_href(CV_URL))}" target="_blank" rel="noopener noreferrer">{icon("i-download")}Download CV</a>
     </div>
   </div>
 </header>
@@ -908,7 +964,7 @@ def build_cv():
 
 def build_404():
     body = f"""
-<header class="page-head" style="min-height:60vh">
+<header class="page-head page-head-tall">
   <div class="wrap">
     <span class="tag">404</span>
     <h1>This page has moved or never existed.</h1>

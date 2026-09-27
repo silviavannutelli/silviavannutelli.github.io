@@ -185,7 +185,7 @@
         t.setAttribute('aria-selected', on ? 'true' : 'false');
         t.tabIndex = on ? 0 : -1;
         var b = bar(k);
-        if (b) b.style.transform = 'scaleX(0)';
+        if (b) b.className = 'p0';
       });
       panels.forEach(function (p, k) {
         var on = k === i;
@@ -213,7 +213,7 @@
         elapsed += now - start;
         var p = Math.min(elapsed / DURATION, 1);
         var b = bar(index);
-        if (b) b.style.transform = 'scaleX(' + p + ')';
+        if (b) b.className = 'p' + Math.round(p * 100);
         if (p >= 1) select(index + 1, false);
       }
       start = now;
@@ -287,6 +287,7 @@
     });
 
     var initial = (location.hash || '').replace('#', '');
+    if (!/^[a-z0-9-]+$/.test(initial)) initial = '';
     if (initial) {
       apply(initial, false);
       var target = doc.getElementById(initial);

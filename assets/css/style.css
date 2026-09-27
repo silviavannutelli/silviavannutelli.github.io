@@ -1,3 +1,39 @@
+@font-face {
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("../fonts/bricolage-3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/plex--F6qfjptAgt5VM-kVkqdyU8n3twJwlBFgsAXHNk.woff2") format("woff2");
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/plex--F6qfjptAgt5VM-kVkqdyU8n3vAOwlBFgsAXHNk.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Public Sans";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/public-ijwAs572Xtc6ZYQws9YVwnNDZpDyNjGolS673tpRgDcqd1sPey7i3m4.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Public Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("../fonts/public-ijwRs572Xtc6ZYQws9YVwnNGfJ7QwOk1.woff2") format("woff2");
+}
+
 /* Silvia Vannutelli — personal site */
 
 @view-transition { navigation: auto; }
@@ -32,6 +68,8 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
+
+html.is-framed body { display: none !important; }
 
 html {
   -webkit-text-size-adjust: 100%;
@@ -340,6 +378,8 @@ a { color: inherit; }
   color: var(--blue);
 }
 
+.tag-sky { color: var(--sky); }
+
 /* ---------- Links ---------- */
 
 .link {
@@ -375,6 +415,8 @@ a { color: inherit; }
 }
 
 /* ---------- Page header ---------- */
+
+.page-head-tall { min-height: 60vh; }
 
 .page-head {
   position: relative;
@@ -616,6 +658,108 @@ a { color: inherit; }
   transform: scaleX(0);
   transform-origin: left;
 }
+.wip-tab .bar i.p0 { transform: scaleX(0.00); }
+.wip-tab .bar i.p1 { transform: scaleX(0.01); }
+.wip-tab .bar i.p2 { transform: scaleX(0.02); }
+.wip-tab .bar i.p3 { transform: scaleX(0.03); }
+.wip-tab .bar i.p4 { transform: scaleX(0.04); }
+.wip-tab .bar i.p5 { transform: scaleX(0.05); }
+.wip-tab .bar i.p6 { transform: scaleX(0.06); }
+.wip-tab .bar i.p7 { transform: scaleX(0.07); }
+.wip-tab .bar i.p8 { transform: scaleX(0.08); }
+.wip-tab .bar i.p9 { transform: scaleX(0.09); }
+.wip-tab .bar i.p10 { transform: scaleX(0.10); }
+.wip-tab .bar i.p11 { transform: scaleX(0.11); }
+.wip-tab .bar i.p12 { transform: scaleX(0.12); }
+.wip-tab .bar i.p13 { transform: scaleX(0.13); }
+.wip-tab .bar i.p14 { transform: scaleX(0.14); }
+.wip-tab .bar i.p15 { transform: scaleX(0.15); }
+.wip-tab .bar i.p16 { transform: scaleX(0.16); }
+.wip-tab .bar i.p17 { transform: scaleX(0.17); }
+.wip-tab .bar i.p18 { transform: scaleX(0.18); }
+.wip-tab .bar i.p19 { transform: scaleX(0.19); }
+.wip-tab .bar i.p20 { transform: scaleX(0.20); }
+.wip-tab .bar i.p21 { transform: scaleX(0.21); }
+.wip-tab .bar i.p22 { transform: scaleX(0.22); }
+.wip-tab .bar i.p23 { transform: scaleX(0.23); }
+.wip-tab .bar i.p24 { transform: scaleX(0.24); }
+.wip-tab .bar i.p25 { transform: scaleX(0.25); }
+.wip-tab .bar i.p26 { transform: scaleX(0.26); }
+.wip-tab .bar i.p27 { transform: scaleX(0.27); }
+.wip-tab .bar i.p28 { transform: scaleX(0.28); }
+.wip-tab .bar i.p29 { transform: scaleX(0.29); }
+.wip-tab .bar i.p30 { transform: scaleX(0.30); }
+.wip-tab .bar i.p31 { transform: scaleX(0.31); }
+.wip-tab .bar i.p32 { transform: scaleX(0.32); }
+.wip-tab .bar i.p33 { transform: scaleX(0.33); }
+.wip-tab .bar i.p34 { transform: scaleX(0.34); }
+.wip-tab .bar i.p35 { transform: scaleX(0.35); }
+.wip-tab .bar i.p36 { transform: scaleX(0.36); }
+.wip-tab .bar i.p37 { transform: scaleX(0.37); }
+.wip-tab .bar i.p38 { transform: scaleX(0.38); }
+.wip-tab .bar i.p39 { transform: scaleX(0.39); }
+.wip-tab .bar i.p40 { transform: scaleX(0.40); }
+.wip-tab .bar i.p41 { transform: scaleX(0.41); }
+.wip-tab .bar i.p42 { transform: scaleX(0.42); }
+.wip-tab .bar i.p43 { transform: scaleX(0.43); }
+.wip-tab .bar i.p44 { transform: scaleX(0.44); }
+.wip-tab .bar i.p45 { transform: scaleX(0.45); }
+.wip-tab .bar i.p46 { transform: scaleX(0.46); }
+.wip-tab .bar i.p47 { transform: scaleX(0.47); }
+.wip-tab .bar i.p48 { transform: scaleX(0.48); }
+.wip-tab .bar i.p49 { transform: scaleX(0.49); }
+.wip-tab .bar i.p50 { transform: scaleX(0.50); }
+.wip-tab .bar i.p51 { transform: scaleX(0.51); }
+.wip-tab .bar i.p52 { transform: scaleX(0.52); }
+.wip-tab .bar i.p53 { transform: scaleX(0.53); }
+.wip-tab .bar i.p54 { transform: scaleX(0.54); }
+.wip-tab .bar i.p55 { transform: scaleX(0.55); }
+.wip-tab .bar i.p56 { transform: scaleX(0.56); }
+.wip-tab .bar i.p57 { transform: scaleX(0.57); }
+.wip-tab .bar i.p58 { transform: scaleX(0.58); }
+.wip-tab .bar i.p59 { transform: scaleX(0.59); }
+.wip-tab .bar i.p60 { transform: scaleX(0.60); }
+.wip-tab .bar i.p61 { transform: scaleX(0.61); }
+.wip-tab .bar i.p62 { transform: scaleX(0.62); }
+.wip-tab .bar i.p63 { transform: scaleX(0.63); }
+.wip-tab .bar i.p64 { transform: scaleX(0.64); }
+.wip-tab .bar i.p65 { transform: scaleX(0.65); }
+.wip-tab .bar i.p66 { transform: scaleX(0.66); }
+.wip-tab .bar i.p67 { transform: scaleX(0.67); }
+.wip-tab .bar i.p68 { transform: scaleX(0.68); }
+.wip-tab .bar i.p69 { transform: scaleX(0.69); }
+.wip-tab .bar i.p70 { transform: scaleX(0.70); }
+.wip-tab .bar i.p71 { transform: scaleX(0.71); }
+.wip-tab .bar i.p72 { transform: scaleX(0.72); }
+.wip-tab .bar i.p73 { transform: scaleX(0.73); }
+.wip-tab .bar i.p74 { transform: scaleX(0.74); }
+.wip-tab .bar i.p75 { transform: scaleX(0.75); }
+.wip-tab .bar i.p76 { transform: scaleX(0.76); }
+.wip-tab .bar i.p77 { transform: scaleX(0.77); }
+.wip-tab .bar i.p78 { transform: scaleX(0.78); }
+.wip-tab .bar i.p79 { transform: scaleX(0.79); }
+.wip-tab .bar i.p80 { transform: scaleX(0.80); }
+.wip-tab .bar i.p81 { transform: scaleX(0.81); }
+.wip-tab .bar i.p82 { transform: scaleX(0.82); }
+.wip-tab .bar i.p83 { transform: scaleX(0.83); }
+.wip-tab .bar i.p84 { transform: scaleX(0.84); }
+.wip-tab .bar i.p85 { transform: scaleX(0.85); }
+.wip-tab .bar i.p86 { transform: scaleX(0.86); }
+.wip-tab .bar i.p87 { transform: scaleX(0.87); }
+.wip-tab .bar i.p88 { transform: scaleX(0.88); }
+.wip-tab .bar i.p89 { transform: scaleX(0.89); }
+.wip-tab .bar i.p90 { transform: scaleX(0.90); }
+.wip-tab .bar i.p91 { transform: scaleX(0.91); }
+.wip-tab .bar i.p92 { transform: scaleX(0.92); }
+.wip-tab .bar i.p93 { transform: scaleX(0.93); }
+.wip-tab .bar i.p94 { transform: scaleX(0.94); }
+.wip-tab .bar i.p95 { transform: scaleX(0.95); }
+.wip-tab .bar i.p96 { transform: scaleX(0.96); }
+.wip-tab .bar i.p97 { transform: scaleX(0.97); }
+.wip-tab .bar i.p98 { transform: scaleX(0.98); }
+.wip-tab .bar i.p99 { transform: scaleX(0.99); }
+.wip-tab .bar i.p100 { transform: scaleX(1.00); }
+
 .wip-tab[aria-selected="true"] {
   background: #fff;
   color: var(--ink);
@@ -853,6 +997,7 @@ a { color: inherit; }
 }
 
 .group { padding: 44px 0 8px; }
+.group-last { padding-bottom: 72px; }
 .group[hidden] { display: none; }
 .group-title {
   display: flex;
