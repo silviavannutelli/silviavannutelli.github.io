@@ -1387,15 +1387,13 @@ html:not(.js) .abs-toggle { display: none; }
   border: 1px solid var(--line);
 }
 .cd-email .icon { width: 22px; height: 22px; color: var(--blue); }
-.cd-email a {
+.cd-email span {
   flex: 1;
   min-width: 0;
   font-weight: 600;
   color: var(--ink);
-  text-decoration: none;
   overflow-wrap: anywhere;
 }
-@media (hover: hover) and (pointer: fine) { .cd-email a:hover { color: var(--cobalt); } }
 
 .cd-addresses { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 .cd-address {

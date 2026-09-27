@@ -116,8 +116,7 @@ def contact_dialog():
   <div class="cd-body">
     <div class="cd-email">
       {icon("i-mail")}
-      <a href="{escape(safe_href('mailto:' + EMAIL))}">{EMAIL}</a>
-      <button type="button" class="icon-btn" data-copy="{EMAIL}" aria-label="Copy email address">{icon("i-copy")}</button>
+      <span>{EMAIL}</span>
     </div>
     <div class="cd-addresses">
       <address class="cd-address is-current">
@@ -134,7 +133,6 @@ def contact_dialog():
       </address>
     </div>
     <div class="cd-social">
-      <a class="btn btn-sm btn-flare" href="{escape(safe_href('mailto:' + EMAIL))}">{icon("i-mail")}Send an email</a>
       <a class="btn btn-sm btn-ghost" href="{escape(safe_href(X_URL))}" target="_blank" rel="noopener noreferrer">{icon("i-x")}@silviavannutell</a>
     </div>
   </div>
@@ -806,7 +804,7 @@ def build_wie():
           <p>I served as Co-Chair of BU WEOrg, a graduate student-led organization dedicated to the advancement of women in all stages of economic research.</p>
           <div class="paper-actions">
             {chip("https://www.bu.edu/econ/students/studentorgs/weorg/", "BU WEOrg website")}
-            <a class="chip" href="{escape(safe_href('mailto:weorg@bu.edu'))}">weorg@bu.edu{icon("i-mail")}</a>
+            <span class="chip">weorg@bu.edu</span>
           </div>
         </div>
       </li>
