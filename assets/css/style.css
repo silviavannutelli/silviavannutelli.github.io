@@ -1915,91 +1915,79 @@ body::after { display: none; }
   .portrait-badge { left: auto; }
 }
 
-/* Empty frames Silvia can replace with her own photographs and graphs. */
-.slot { margin: 0; }
+/* Picture frames sit in the text so the line wraps around them. */
+.slot {
+  float: right;
+  width: 148px;
+  margin: 2px 0 10px 16px;
+}
 .slot-frame {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 8px;
   aspect-ratio: 4 / 3;
-  padding: 12px;
-  border: 1px solid var(--line);
-  background-color: var(--mist);
-  background-image:
+  border: 1px solid var(--ink);
+  box-shadow: inset 0 0 0 5px var(--paper), inset 0 0 0 6px var(--line);
+  background:
     linear-gradient(var(--mist-2) 1px, transparent 1px),
     linear-gradient(90deg, var(--mist-2) 1px, transparent 1px);
-  background-size: 14px 14px;
+  background-size: 12px 12px;
+  background-color: var(--mist);
 }
-.slot-kind {
-  font: 500 .68rem/1 var(--font-mono);
-  letter-spacing: .08em;
-  text-transform: uppercase;
+.slot figcaption {
+  margin-top: 6px;
+  font: 500 .68rem/1.35 var(--font-mono);
+  letter-spacing: .02em;
   color: var(--muted);
 }
-.slot-label {
-  font: 600 .92rem/1.25 var(--font-display);
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+.slot-kind {
+  display: block;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.slot-copy::after,
+.tl-card::after,
+.wip-card::after,
+.hero-note::after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
-.hero-figures {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 18px;
-}
-.slot-pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  width: min(100%, 260px);
-}
-.hero-lower {
-  position: relative;
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(140px, .55fr) minmax(140px, .55fr);
-  gap: clamp(18px, 3vw, 28px);
-  align-items: start;
-  margin-top: clamp(48px, 6vw, 80px);
-  padding-top: 56px;
+.hero-note {
+  margin-top: 40px;
+  padding-top: 28px;
   border-top: 1px solid var(--line);
 }
-.hero-lower .hero-statement { margin-top: 0; }
-.hero-lower .slot-frame { aspect-ratio: 5 / 4; }
-
-.paper {
-  grid-template-columns: 132px minmax(0, 1fr) 148px;
-  align-items: start;
+.hero-note .hero-statement { margin-top: 0; max-width: none; }
+.frame-pair {
+  float: right;
+  display: grid;
+  grid-template-columns: 150px 150px;
+  gap: 14px;
+  width: 314px;
+  margin: 0 0 8px 22px;
 }
-.paper .slot-frame { aspect-ratio: 1; }
-.course {
-  grid-template-columns: 150px minmax(0, 1fr) 148px;
-  align-items: start;
+.frame-pair .slot {
+  float: none;
+  width: auto;
+  margin: 0;
 }
-.course .slot-frame,
-.wip-card .slot-frame { aspect-ratio: 1; }
-.wip-card .slot,
 .wip-panel .slot,
-.tl-card .slot,
-.resource .slot { margin-bottom: 16px; }
-.wip-panel .slot-frame { aspect-ratio: 16 / 7; }
-.tl-card .slot { max-width: 280px; }
-.resource .slot { max-width: 280px; }
-.resource .slot-frame,
-.tl-card .slot-frame { aspect-ratio: 16 / 10; }
+.resource .slot,
+.tl-card .slot { width: 180px; }
+.wip-card .slot { width: 120px; }
+
+.cv-short .cv-block { padding-bottom: 28px; }
+.cv-short .cv-block + .cv-block { padding-top: 24px; }
+.cv-bar span { display: block; max-width: 42em; margin-top: 4px; color: var(--muted); font-size: .9rem; }
 
 @media (max-width: 860px) {
-  .hero-figures { align-items: center; }
-  .slot-pair { width: min(100%, 330px); }
-  .hero-lower { grid-template-columns: 1fr; }
-  .hero-lower .slot { max-width: 360px; }
-  .paper, .course { grid-template-columns: 1fr; }
-  .paper .slot, .course .slot { max-width: 200px; }
+  .frame-pair {
+    float: none;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 0 16px;
+  }
+  .slot { width: 120px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

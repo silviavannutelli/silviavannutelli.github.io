@@ -469,12 +469,13 @@ def motif_svg(kind, seed):
 # ---------------------------------------------------------------- pages
 
 def figure_slot(kind, label):
+    caption = label if len(label) <= 36 else kind
     return (
         f'<figure class="slot">'
-        f'<div class="slot-frame">'
-        f'<span class="slot-kind">{escape(kind)}</span>'
-        f'<span class="slot-label">{escape(label)}</span>'
-        f'</div></figure>'
+        f'<div class="slot-frame" role="img" aria-label="{escape(kind)}: {escape(label)}"></div>'
+        f'<figcaption><span class="slot-kind">{escape(kind)}</span>'
+        + (f" {escape(caption)}" if caption != kind else "")
+        + "</figcaption></figure>"
     )
 
 
@@ -492,11 +493,12 @@ def wip_window():
         hidden = "" if i == 0 else " hidden"
         panels.append(
             f'<div class="wip-panel" role="tabpanel" id="wip-panel-{i}" aria-labelledby="wip-tab-{i}"{hidden}>'
+            f'<div class="slot-copy">'
             f'{figure_slot("Graph", w["title"])}'
             f'<div class="wip-meta"></div>'
             f'<h3>{escape(w["title"])}</h3>'
             f'<p class="wip-with">with <span>{escape(", ".join(w["coauthors"][:-1]) + (" and " if len(w["coauthors"]) > 1 else "") + w["coauthors"][-1])}</span></p>'
-            f"{note}</div>"
+            f"{note}</div></div>"
         )
     return f"""
 <div class="wip reveal" data-wip>
@@ -551,10 +553,12 @@ def build_home():
         </div>
       </div>
     </div>
-    <div class="hero-lower">
+    <div class="hero-note">
+      <div class="frame-pair">
+        {figure_slot("Image", "Add a photograph")}
+        {figure_slot("Image", "Add a photograph")}
+      </div>
       <p class="hero-statement">I am an applied economist using original and administrative data and rigorous empirical methods to answer policy-relevant questions. My research seeks to improve policymaking by explaining how institutional design, political incentives, and organizational structures shape government decisions and public-sector performance. I study governments as complex organizations and examine both the forces that lead policymakers to adopt particular policies and the effects of those choices on individuals, firms, and communities.</p>
-      {figure_slot("Image", "Add a photograph")}
-      {figure_slot("Image", "Add a photograph")}
     </div>
   </div>
 </section>
@@ -592,6 +596,7 @@ def paper_item(p, kind):
 <li class="paper reveal" id="{p['id']}">
   <div class="paper-side">{side}</div>
   <div>
+    {figure_slot("Graph", p["title"])}
     <h3 class="paper-title"><a href="{escape(safe_href(p['href']))}" target="_blank" rel="noopener noreferrer">{escape(p['title'])}</a></h3>
     {authors}
     {venue}
@@ -602,7 +607,6 @@ def paper_item(p, kind):
     {note}
     <div class="abstract" id="{abs_id}" aria-hidden="true"><div><p>{escape(p['abstract'])}</p></div></div>
   </div>
-  {figure_slot("Graph", p["title"])}
 </li>"""
 
 
@@ -695,6 +699,7 @@ def build_teaching():
     <span class="course-inst">{escape(c['inst'])}</span>
   </div>
   <div>
+    {figure_slot("Image", c["title"])}
     <h3>{escape(c['title'])}</h3>
     <p class="summary">{escape(c['summary'])}</p>
     <div class="paper-actions">
@@ -703,7 +708,6 @@ def build_teaching():
     </div>
     <div class="abstract" id="{did}" aria-hidden="true"><div>{paras}</div></div>
   </div>
-  {figure_slot("Image", c["title"])}
 </article>""")
     body = f"""
 <header class="page-head">
@@ -832,64 +836,6 @@ def build_cv():
         ("2013", "<strong>B.S., Political Science</strong>, University of Roma Tre", "Summa cum laude"),
         ("2012–13", "<strong>Visiting Student (Erasmus)</strong>, Université Paris 1 Panthéon-Sorbonne", ""),
     ])
-    grants = rows([
-        ("2026", "<strong>Alfred P. Sloan Foundation Grant</strong> ($468,000)", ""),
-        ("2026", "<strong>IPR Seed Grant</strong> ($7,500)", ""),
-        ("2024", "<strong>IPR Seed Grant</strong> ($5,000)", ""),
-        ("2023", "<strong>Northwestern Faculty Support Grant</strong> ($40,000)", ""),
-        ("2022", "<strong>IPR Seed Grant</strong> ($5,000)", ""),
-        ("2020", "<strong>Manuel Abdala Gift Research Grant</strong>, Boston University", ""),
-        ("2019, 2020", "<strong>Graduate Research Abroad Fellowship</strong>, Boston University", ""),
-        ("2019", "<strong>VisitINPS Fellowship</strong>, Italian Social Security Agency", ""),
-        ("2018–19", "<strong>Research Fellowship</strong>, Italian Institute for Public Policy Evaluation (INAPP)", ""),
-        ("2018", "<strong>Summer Research Award</strong>, Boston University", ""),
-        ("2017", "<strong>Bank of Italy Summer Fellowship</strong>", ""),
-        ("2015", "<strong>Dean’s Student Fellowship</strong>, Boston University", ""),
-        ("2015", "<strong>INET Summer School Fellowship</strong>", ""),
-    ])
-    teaching = rows([
-        ("2025–26", "<strong>Governing Better: A Political Economy of the State</strong> (Graduate), Sciences Po", ""),
-        ("2022–", "<strong>Public Economics</strong> (Graduate), Northwestern University", ""),
-        ("2022–", "<strong>Economics of State and Local Governments</strong> (Undergraduate), Northwestern University", ""),
-        ("2020", "<strong>Modern Difference-in-Differences Designs</strong>, ICPSR · Teaching Assistant", ""),
-        ("2016", "<strong>Economics of the Public Sector</strong> and <strong>Markets and Development Economics</strong>, Boston University · Teaching Fellow", ""),
-    ])
-    organizing = rows([
-        ("2025, 2026", "<strong>CEPR Political Economy Symposium</strong> · Organizer", ""),
-        ("2023–2026", "<strong>Barcelona GSE Summer Forum, Public Economics</strong> · Organizer", ""),
-        ("2023, 2025", "<strong>European Economic Association Conference</strong> · Program Committee", ""),
-        ("2024, 2025", "<strong>Ridge-LACEA Workshop on Public Economics</strong> · Program Committee", ""),
-        ("2023", "<strong>Northwestern Interactions Conference</strong> · Organizer", ""),
-        ("2022", "<strong>SIOE Conference</strong> · Program Committee; <strong>IIPF Annual Congress</strong> · Scientific Committee", ""),
-        ("2019", "<strong>WERISE Conference</strong>, Boston University · Organizer", ""),
-    ])
-    seminars = rows([
-        ("2021–", "<strong>Seminar and Lunch in Health, Labor, Education and Public</strong>, Northwestern", ""),
-        ("2024–", "<strong>Seminar in Labor Economics</strong>, Northwestern", ""),
-        ("2025–", "<strong>Seminar in Political Economy</strong>, Sciences Po", ""),
-        ("2021–", "<strong>Junior and Senior Recruitment</strong>; <strong>Undergraduate Women in Economics Advisor</strong>; <strong>Undergraduate Thesis Advising</strong>, Northwestern", ""),
-        ("2017–19", "<strong>Women in Economics (WEOrg)</strong>, Boston University · Co-Chair", ""),
-    ])
-    students = rows([
-        ("PhD", "<strong>Elena Stella</strong>", "NUS Finance"),
-        ("PhD", "<strong>Johanna Rayl</strong>", "UC Berkeley (Postdoc)"),
-        ("PhD", "<strong>Shaheen Naseer</strong>", "Bilkent University"),
-        ("PhD", "<strong>Devis Decet</strong>", "Bocconi University (Postdoc), NHH (Postdoc)"),
-        ("PhD", "<strong>Giovanni Pisauro</strong>", "Cornerstone Research"),
-        ("PhD", "<strong>Carlo Medici</strong>", "Brown (Postdoc), UCLA (Assistant Professor)"),
-        ("PhD", "<strong>Laura Montenbruck</strong>", "Stockholm University"),
-        ("PhD", "<strong>Weijia Zhao</strong>", "Marshall Wace"),
-        ("Pre-PhD", "<strong>Martina Cuneo</strong>", "PhD student, NYU"),
-        ("Pre-PhD", "<strong>Violet Hamlin</strong>", "Research Associate, Chicago Booth"),
-    ])
-    referee = "American Economic Review, Econometrica, Journal of Political Economy, Quarterly Journal of Economics, Review of Economic Studies, Journal of the European Economic Association, Journal of Political Economy: Microeconomics, AEJ: Applied Economics, AER: Insights, AEJ: Economic Policy, Review of Economics and Statistics, Journal of Labor Economics, Management Science, Journal of Public Economics, Journal of Urban Economics, Journal of Development Economics, Journal of International Economics, Quantitative Economics, National Tax Journal, Journal of Law, Economics and Organization, European Economic Review, Economica, European Journal of Political Economy, Journal of Economic Inequality, Social Science Research"
-    referee = referee.replace("Journal of Law, Economics and Organization", "Journal of Law, Economics, and Organization")
-    journals = [j.strip() for j in referee.replace("Law, Economics, and", "Law§ Economics§ and").split(",")]
-    ref_tags = "".join(f"<li>{escape(j.replace('§', ','))}</li>" for j in journals)
-
-    toc = [("positions", "Positions"), ("education", "Education"), ("fields", "Fields"), ("research", "Research"), ("grants", "Grants & awards"),
-           ("teaching", "Teaching"), ("service", "Service"), ("students", "Advising"), ("refereeing", "Refereeing"), ("languages", "Languages")]
-    toc_html = "".join(f'<li><a href="#{i}">{escape(t)}</a></li>' for i, t in toc)
 
     body = f"""
 <header class="page-head">
@@ -897,43 +843,25 @@ def build_cv():
     <span class="tag">05 · Curriculum Vitae</span>
     <h1>CV</h1>
     <div class="cv-bar reveal">
-      <div><strong>Full CV (PDF)</strong><span>Updated April 2026</span></div>
+      <div><strong>Full CV (PDF)</strong><span>Updated April 2026. Grants, teaching, service, advising, and refereeing are in the PDF.</span></div>
       <a class="btn" href="{escape(safe_href(CV_URL))}" target="_blank" rel="noopener noreferrer">{icon("i-download")}Download CV</a>
     </div>
   </div>
 </header>
 
 <section class="section">
-  <div class="wrap">
-    <div class="cv-layout">
-      <nav aria-label="CV sections"><ul class="cv-toc">{toc_html}</ul></nav>
-      <div>
-        <section class="cv-block reveal" id="positions"><h2>Academic positions &amp; affiliations</h2>{positions}</section>
-        <section class="cv-block reveal" id="education"><h2>Education</h2>{education}</section>
-        <section class="cv-block reveal" id="fields"><h2>Fields</h2>
-          <ul class="cv-tags"><li>Political Economy</li><li>Public Economics</li><li>Organizational Economics</li></ul>
-        </section>
-        <section class="cv-block reveal" id="research"><h2>Research</h2>
-          <p class="cv-prose"><a href="research.html">Research</a></p>
-          <div class="paper-actions">
-            <a class="chip" href="research.html#publications">Publications{icon("i-right")}</a>
-            <a class="chip" href="research.html#working-papers">Working papers{icon("i-right")}</a>
-            <a class="chip" href="research.html#in-progress">Work in progress{icon("i-right")}</a>
-          </div>
-        </section>
-        <section class="cv-block reveal" id="grants"><h2>Grants, fellowships &amp; awards</h2>{grants}</section>
-        <section class="cv-block reveal" id="teaching"><h2>Teaching</h2>{teaching}</section>
-        <section class="cv-block reveal" id="service"><h2>Professional service</h2>
-          <p class="cv-sub">Conference organizing</p>{organizing}
-          <p class="cv-sub">Seminars &amp; departmental service</p>{seminars}
-        </section>
-        <section class="cv-block reveal" id="students"><h2>Student advising</h2>{students}</section>
-        <section class="cv-block reveal" id="refereeing"><h2>Referee for</h2><ul class="cv-tags">{ref_tags}</ul></section>
-        <section class="cv-block reveal" id="languages"><h2>Languages</h2>
-          <ul class="cv-tags"><li>Italian · native</li><li>English · fluent</li><li>French · intermediate</li><li>Spanish · beginner</li></ul>
-        </section>
+  <div class="wrap cv-short">
+    <section class="cv-block reveal" id="positions"><h2>Academic positions &amp; affiliations</h2>{positions}</section>
+    <section class="cv-block reveal" id="education"><h2>Education</h2>{education}</section>
+    <section class="cv-block reveal" id="fields"><h2>Fields</h2>
+      <ul class="cv-tags"><li>Political Economy</li><li>Public Economics</li><li>Organizational Economics</li></ul>
+    </section>
+    <section class="cv-block reveal" id="research"><h2>Research and teaching</h2>
+      <div class="paper-actions">
+        <a class="chip" href="research.html">Research{icon("i-right")}</a>
+        <a class="chip" href="teaching.html">Teaching{icon("i-right")}</a>
       </div>
-    </div>
+    </section>
   </div>
 </section>
 """
