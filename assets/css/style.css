@@ -831,12 +831,6 @@ a { color: inherit; }
   margin-top: auto;
   padding-top: 26px;
 }
-.wip-keys {
-  margin: 22px 0 0;
-  font-size: .85rem;
-  color: var(--muted);
-}
-.wip-keys p { margin: 0; }
 .wip-count { font: 500 .8rem var(--font-mono); color: var(--muted); }
 .wip-count b { color: var(--ink); font-weight: 600; }
 .wip-buttons { display: flex; gap: 8px; }
@@ -1904,6 +1898,7 @@ body::after { display: none; }
   background: transparent;
   border-color: var(--line);
 }
+.wip-buttons .icon-btn { width: 44px; height: 44px; }
 .tl-dot {
   border-radius: 0;
   background: var(--blue);
@@ -2029,70 +2024,15 @@ button.cd-email {
 .cv-short .cv-block + .cv-block { padding-top: 24px; }
 .cv-bar span { display: block; max-width: 42em; margin-top: 4px; color: var(--muted); font-size: .9rem; }
 
+.wip-panel { min-width: 0; }
+.wip-panel .slot,
+.wip-panel .slot-frame { min-width: 0; max-width: 100%; }
+
 @media (max-width: 860px) {
   .frame-pair { grid-template-columns: 1fr; }
   .frame-pair .slot-frame,
   .wip-panel .slot-frame { min-height: 200px; }
   .tl-card .slot-frame { min-height: 0; }
-}
-
-.wip-stage {
-  padding-left: 68px;
-  padding-right: 68px;
-}
-.wip-panel { min-width: 0; width: 100%; }
-.wip-panel .slot,
-.wip-panel .slot-frame { min-width: 0; max-width: 100%; }
-.wip-arrow {
-  position: absolute;
-  top: 46%;
-  z-index: 2;
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  margin: 0;
-  padding: 0;
-  border: 1px solid var(--ink);
-  border-radius: 0;
-  background: var(--paper);
-  color: var(--ink);
-  box-shadow: 0 3px 0 var(--blue-deep);
-  cursor: pointer;
-  transform: translateY(-50%);
-}
-.wip-arrow.prev { left: 12px; }
-.wip-arrow.next { right: 12px; }
-.wip-arrow .icon { width: 18px; height: 18px; }
-.wip-arrow:active {
-  box-shadow: 0 0 0 var(--blue-deep);
-  transform: translateY(calc(-50% + 3px));
-}
-.wip-arrow:focus-visible {
-  outline: 2px solid var(--blue);
-  outline-offset: 3px;
-}
-@media (hover: hover) and (pointer: fine) {
-  .wip-arrow:hover {
-    background: var(--blue);
-    border-color: var(--blue);
-    color: var(--paper);
-  }
-}
-@media (max-width: 860px) {
-  .wip-stage { padding: 22px 18px; }
-  .wip-keys {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px 14px;
-  }
-  .wip-keys p { flex: 1 1 12rem; }
-  .wip-arrow {
-    position: static;
-    transform: none;
-  }
-  .wip-arrow:active { transform: translateY(3px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2104,9 +2044,5 @@ button.cd-email {
     transition-delay: 0s !important;
   }
   .js .reveal { clip-path: none; transform: none; }
-  .wip-arrow:active { transform: translateY(-50%); }
   @view-transition { navigation: none; }
-}
-@media (prefers-reduced-motion: reduce) and (max-width: 860px) {
-  .wip-arrow:active { transform: none; }
 }
