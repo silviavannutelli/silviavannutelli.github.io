@@ -17,6 +17,12 @@
     function setOpen(open) {
       sheet.classList.toggle('is-open', open);
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Menu');
+      var main = $('#content');
+      if (main) {
+        main.inert = open;
+        main.setAttribute('aria-hidden', open ? 'true' : 'false');
+      }
       var use = btn.querySelector('use');
       if (use) use.setAttribute('href', 'assets/img/icons.svg#' + (open ? 'i-close' : 'i-menu'));
     }
@@ -107,26 +113,28 @@
     });
 
     if (location.hash === '#contact') open();
+  }
 
-    var copyBtn = $('[data-copy]', dialog);
-    if (copyBtn) {
+  function initCopy() {
+    $all('[data-copy]').forEach(function (copyBtn) {
       copyBtn.addEventListener('click', function () {
         var text = copyBtn.getAttribute('data-copy');
+        var label = copyBtn.querySelector('.cd-copy');
         var done = function () {
-          var use = copyBtn.querySelector('use');
-          if (use) {
-            use.setAttribute('href', 'assets/img/icons.svg#i-check');
-            setTimeout(function () { use.setAttribute('href', 'assets/img/icons.svg#i-copy'); }, 1600);
+          if (label) {
+            var prev = label.textContent;
+            label.textContent = 'Copied';
+            setTimeout(function () { label.textContent = prev; }, 1600);
           }
-          toast('Email copied');
+          toast('Copied');
         };
-        if (navigator.clipboard && navigator.clipboard.writeText) {
+        if (navigator.clipboard && window.isSecureContext && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(text).then(done, function () { toast(text); });
         } else {
           toast(text);
         }
       });
-    }
+    });
   }
 
   /* ---------- Reveal on scroll ---------- */
@@ -170,7 +178,7 @@
 
     var DURATION = 7000;
     var index = 0;
-    var playing = !reduceMotion;
+    var playing = false;
     var hovering = false;
     var start = 0;
     var elapsed = 0;
@@ -342,6 +350,7 @@
   function boot() {
     initMenu();
     initContact();
+    initCopy();
     initReveal();
     initWip();
     initFilters();

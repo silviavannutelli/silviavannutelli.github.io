@@ -113,22 +113,23 @@ def contact_dialog():
         <h2 id="contact-title">Contact</h2>
   </div>
   <div class="cd-body">
-    <div class="cd-email">
+    <button type="button" class="cd-email" data-copy="{EMAIL}">
       {icon("i-mail")}
-      <span>{EMAIL}</span>
-    </div>
+      <span class="cd-email-addr">{EMAIL}</span>
+      <span class="cd-copy">Copy</span>
+    </button>
     <div class="cd-addresses">
       <address class="cd-address is-current">
         <span class="tag">Current · 2026–27</span>
         <strong>Hoover Institution</strong>
         Hoover Memorial Building<br>Office 337, 434 Galvez Mall<br>Stanford, CA 94305
-        <br>{chip("https://www.google.com/maps/search/?api=1&query=Hoover+Memorial+Building+434+Galvez+Mall+Stanford+CA+94305", "Map", "i-pin")}
+        <br>{chip("https://www.google.com/maps/search/?api=1&query=Hoover+Memorial+Building+434+Galvez+Mall+Stanford+CA+94305", "Hoover map", "i-pin")}
       </address>
       <address class="cd-address">
         <span class="tag">Northwestern</span>
         <strong>Kellogg Global Hub</strong>
         Office 3431<br>2211 Campus Drive<br>Evanston, IL 60208
-        <br>{chip("https://www.google.com/maps/search/?api=1&query=Kellogg+Global+Hub+2211+Campus+Dr+Evanston+IL+60208", "Map", "i-pin")}
+        <br>{chip("https://www.google.com/maps/search/?api=1&query=Kellogg+Global+Hub+2211+Campus+Dr+Evanston+IL+60208", "Kellogg map", "i-pin")}
       </address>
     </div>
     <div class="cd-social">
@@ -344,7 +345,7 @@ WORKING = [
     ),
     dict(
         id="back-to-black",
-        status="RR at Journal of Human Resources",
+        status="Revised and resubmitted, Journal of Human Resources",
         title="Back to Black? The Impact of Regularizing Migrant Workers",
         href="https://www.dropbox.com/scl/fi/jcfgsk04utidgqgmboh4f/DPMNV_2023_v5.pdf?rlkey=bx2pvbb7x2auixcx8cikqfbb0&dl=0",
         coauthors=["Edoardo Di Porto", "Enrica Maria Martino", "Paolo Naticchioni"],
@@ -359,8 +360,8 @@ WORKING = [
         href="https://www.nber.org/papers/w35493",
         coauthors=["Vittoria Dicandia"],
         venue="",
-        links=[],
-        note="This project is made possible thanks to the Visitinps Scholars program, granting access to the universe of italian Social Security Data.",
+        links=[("NBER WP 35493", "https://www.nber.org/papers/w35493", "i-arrow")],
+        note="This project is made possible thanks to the Visitinps Scholars program, granting access to the universe of Italian Social Security Data.",
         abstract="We study how firms and workers adjust when previously restricted migrants gain full and portable work rights in a labor market with substantial informality. We exploit the 2007 EU accession of Bulgaria and Romania, which granted unrestricted work rights to Italy's largest migrant group. Using matched employer–employee administrative data and an IV-DID design, we find that firms suddenly and persistently shift employment composition toward EU07 workers, compressing the native employment share without reducing native hiring or increasing separations. We don't detect any significant change in wages for either natives or EU07 workers. For migrants, this null effect reflects offsetting compositional shifts as newly observed and incumbent EU07 workers enter the formal workforce with different wage trajectories. Consistent with a shift in bargaining power toward workers, EU07 migrants experienced significant gains in job mobility and job security. Overall, the evidence suggests that removing legal restrictions reshaped firms’ personnel choices and altered migrants’ employment relationships, improving their outside options, bargaining position, and access to more secure jobs.",
     ),
 ]
@@ -469,13 +470,11 @@ def motif_svg(kind, seed):
 # ---------------------------------------------------------------- pages
 
 def figure_slot(kind, label):
-    caption = label if len(label) <= 36 else kind
     return (
         f'<figure class="slot">'
         f'<div class="slot-frame" role="img" aria-label="{escape(kind)}: {escape(label)}"></div>'
-        f'<figcaption><span class="slot-kind">{escape(kind)}</span>'
-        + (f" {escape(caption)}" if caption != kind else "")
-        + "</figcaption></figure>"
+        f'<figcaption>{escape(kind)}</figcaption>'
+        f'</figure>'
     )
 
 
@@ -493,12 +492,10 @@ def wip_window():
         hidden = "" if i == 0 else " hidden"
         panels.append(
             f'<div class="wip-panel" role="tabpanel" id="wip-panel-{i}" aria-labelledby="wip-tab-{i}"{hidden}>'
-            f'<div class="slot-copy">'
             f'{figure_slot("Graph", w["title"])}'
-            f'<div class="wip-meta"></div>'
             f'<h3>{escape(w["title"])}</h3>'
             f'<p class="wip-with">with <span>{escape(", ".join(w["coauthors"][:-1]) + (" and " if len(w["coauthors"]) > 1 else "") + w["coauthors"][-1])}</span></p>'
-            f"{note}</div></div>"
+            f"{note}</div>"
         )
     return f"""
 <div class="wip reveal" data-wip>
@@ -511,7 +508,7 @@ def wip_window():
       <span class="wip-count" aria-live="polite">Project <b data-wip-current>1</b> of {len(WIP)}</span>
       <div class="wip-buttons">
         <button type="button" class="icon-btn prev" data-wip-prev aria-label="Previous project">{icon("i-right")}</button>
-        <button type="button" class="icon-btn" data-wip-toggle aria-pressed="false" aria-label="Pause rotation">{icon("i-pause")}</button>
+        <button type="button" class="icon-btn" data-wip-toggle aria-pressed="true" aria-label="Play rotation">{icon("i-play")}</button>
         <button type="button" class="icon-btn" data-wip-next aria-label="Next project">{icon("i-right")}</button>
       </div>
     </div>
@@ -554,11 +551,11 @@ def build_home():
       </div>
     </div>
     <div class="hero-note">
-      <div class="frame-pair">
-        {figure_slot("Image", "Add a photograph")}
-        {figure_slot("Image", "Add a photograph")}
-      </div>
       <p class="hero-statement">I am an applied economist using original and administrative data and rigorous empirical methods to answer policy-relevant questions. My research seeks to improve policymaking by explaining how institutional design, political incentives, and organizational structures shape government decisions and public-sector performance. I study governments as complex organizations and examine both the forces that lead policymakers to adopt particular policies and the effects of those choices on individuals, firms, and communities.</p>
+      <div class="frame-pair">
+        {figure_slot("Photograph", "Home photograph")}
+        {figure_slot("Photograph", "Home photograph")}
+      </div>
     </div>
   </div>
 </section>
@@ -592,11 +589,12 @@ def paper_item(p, kind):
     authors = f'<p class="paper-authors">with {co(p["coauthors"])}</p>' if p["coauthors"] else ""
     links = "".join(chip(h, escape(t), ic) for t, h, ic in p["links"])
     note = f'<p class="paper-note">{p["note"]}</p>' if p.get("note") else ""
+    plain = "" if kind == "pub" else " paper-plain"
+    side_html = f'<div class="paper-side">{side}</div>' if kind == "pub" else ""
     return f"""
-<li class="paper reveal" id="{p['id']}">
-  <div class="paper-side">{side}</div>
-  <div>
-    {figure_slot("Graph", p["title"])}
+<li class="paper reveal{plain}" id="{p['id']}">
+  {side_html}
+  <div class="paper-main">
     <h3 class="paper-title"><a href="{escape(safe_href(p['href']))}" target="_blank" rel="noopener noreferrer">{escape(p['title'])}</a></h3>
     {authors}
     {venue}
@@ -605,6 +603,7 @@ def paper_item(p, kind):
       <button type="button" class="abs-toggle" data-expand aria-expanded="false" aria-controls="{abs_id}" data-open-label="Hide abstract">{icon("i-plus")}<span class="lbl">Abstract</span></button>
     </div>
     {note}
+    {figure_slot("Graph", p["title"])}
     <div class="abstract" id="{abs_id}" aria-hidden="true"><div><p>{escape(p['abstract'])}</p></div></div>
   </div>
 </li>"""
@@ -699,9 +698,9 @@ def build_teaching():
     <span class="course-inst">{escape(c['inst'])}</span>
   </div>
   <div>
-    {figure_slot("Image", c["title"])}
     <h3>{escape(c['title'])}</h3>
     <p class="summary">{escape(c['summary'])}</p>
+    {figure_slot("Image", c["title"])}
     <div class="paper-actions">
       {links}
       <button type="button" class="abs-toggle" data-expand aria-expanded="false" aria-controls="{did}" data-open-label="Hide description">{icon("i-plus")}<span class="lbl">Full description</span></button>
@@ -788,7 +787,7 @@ def build_wie():
           <p>I served as Co-Chair of BU WEOrg, a graduate student-led organization dedicated to the advancement of women in all stages of economic research.</p>
           <div class="paper-actions">
             {chip("https://www.bu.edu/econ/students/studentorgs/weorg/", "BU WEOrg website")}
-            <span class="chip">weorg@bu.edu</span>
+            <button type="button" class="chip" data-copy="weorg@bu.edu">weorg@bu.edu</button>
           </div>
         </div>
       </li>
