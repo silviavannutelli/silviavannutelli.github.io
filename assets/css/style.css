@@ -1990,10 +1990,18 @@ body { line-height: 1.7; }
 .frame-pair .slot { margin: 0; }
 .frame-pair .slot-frame { aspect-ratio: 4 / 3; min-height: 280px; }
 .wip-panel .slot-frame,
-.wip-card .slot-frame,
-.tl-card .slot-frame,
-.resource .slot-frame { aspect-ratio: 16 / 9; min-height: 280px; }
+.wip-card .slot-frame { aspect-ratio: 16 / 9; min-height: 280px; }
 .wip-panel .slot { margin-bottom: 22px; }
+.tl-card { overflow: auto; }
+.tl-card .slot {
+  float: right;
+  width: 120px;
+  margin: 0 0 8px 16px;
+}
+.tl-card .slot-frame {
+  aspect-ratio: 1;
+  min-height: 0;
+}
 
 button.cd-email {
   width: 100%;
@@ -2017,7 +2025,9 @@ button.cd-email {
 
 @media (max-width: 860px) {
   .frame-pair { grid-template-columns: 1fr; }
-  .slot-frame, .frame-pair .slot-frame { min-height: 200px; }
+  .frame-pair .slot-frame,
+  .wip-panel .slot-frame { min-height: 200px; }
+  .tl-card .slot-frame { min-height: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -700,7 +700,6 @@ def build_teaching():
   <div>
     <h3>{escape(c['title'])}</h3>
     <p class="summary">{escape(c['summary'])}</p>
-    {figure_slot("Image", c["title"])}
     <div class="paper-actions">
       {links}
       <button type="button" class="abs-toggle" data-expand aria-expanded="false" aria-controls="{did}" data-open-label="Hide description">{icon("i-plus")}<span class="lbl">Full description</span></button>
@@ -726,7 +725,6 @@ def build_teaching():
   <div class="wrap">
     <div class="resource reveal">
       <div>
-        {figure_slot("Image", "Recent Advances in DiD Methods")}
         <span class="tag">Talk · Methods</span>
         <h3>Recent Advances in DiD Methods</h3>
         <p>Here you can find the slides and the video of a talk I gave about Recent Advances in DiD methods.</p>
