@@ -486,7 +486,7 @@ def wip_window():
         tabs.append(
             f'<li role="presentation"><button type="button" class="wip-tab" role="tab" id="wip-tab-{i}" '
             f'aria-controls="wip-panel-{i}" aria-selected="{sel}" tabindex="{0 if i == 0 else -1}">'
-            f'<span class="n">{n}</span><span class="t">{escape(w["title"])}</span><span class="bar"><i></i></span></button></li>'
+            f'<span class="n">{n}</span><span class="t">{escape(w["title"])}</span></button></li>'
         )
         note = f'<p class="wip-note">{escape(w["note"])}</p>' if w.get("note") else ""
         hidden = "" if i == 0 else " hidden"
@@ -504,14 +504,7 @@ def wip_window():
   </ul>
   <div class="wip-stage">
     {''.join(panels)}
-    <div class="wip-controls">
-      <span class="wip-count" aria-live="polite">Project <b data-wip-current>1</b> of {len(WIP)}</span>
-      <div class="wip-buttons">
-        <button type="button" class="icon-btn prev" data-wip-prev aria-label="Previous project">{icon("i-right")}</button>
-        <button type="button" class="icon-btn" data-wip-toggle aria-pressed="true" aria-label="Play rotation">{icon("i-play")}</button>
-        <button type="button" class="icon-btn" data-wip-next aria-label="Next project">{icon("i-right")}</button>
-      </div>
-    </div>
+    <p class="wip-keys">Arrow keys move between projects. <span class="wip-count" aria-live="polite"><b data-wip-current>1</b> of {len(WIP)}</span></p>
   </div>
 </div>"""
 

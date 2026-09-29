@@ -831,6 +831,11 @@ a { color: inherit; }
   margin-top: auto;
   padding-top: 26px;
 }
+.wip-keys {
+  margin: 22px 0 0;
+  font-size: .85rem;
+  color: var(--muted);
+}
 .wip-count { font: 500 .8rem var(--font-mono); color: var(--muted); }
 .wip-count b { color: var(--ink); font-weight: 600; }
 .wip-buttons { display: flex; gap: 8px; }

@@ -173,18 +173,9 @@
     var tabs = $all('[role="tab"]', root);
     var panels = $all('[role="tabpanel"]', root);
     var countEl = $('[data-wip-current]', root);
-    var toggle = $('[data-wip-toggle]', root);
     if (!tabs.length) return;
 
-    var DURATION = 7000;
     var index = 0;
-    var playing = false;
-    var hovering = false;
-    var start = 0;
-    var elapsed = 0;
-    var raf = null;
-
-    function bar(i) { return tabs[i].querySelector('.bar i'); }
 
     function select(i, focus) {
       i = (i + tabs.length) % tabs.length;
@@ -192,21 +183,11 @@
         var on = k === i;
         t.setAttribute('aria-selected', on ? 'true' : 'false');
         t.tabIndex = on ? 0 : -1;
-        var b = bar(k);
-        if (b) b.className = 'p0';
       });
       panels.forEach(function (p, k) {
-        var on = k === i;
-        p.hidden = !on;
-        p.classList.remove('is-entering');
-        if (on && !reduceMotion) {
-          void p.offsetWidth;
-          p.classList.add('is-entering');
-        }
+        p.hidden = k !== i;
       });
       index = i;
-      elapsed = 0;
-      start = performance.now();
       if (countEl) countEl.textContent = String(i + 1);
       if (focus) tabs[i].focus();
       var list = tabs[i].closest('ul');
@@ -216,55 +197,19 @@
       }
     }
 
-    function tick(now) {
-      if (playing && !hovering && !doc.hidden) {
-        elapsed += now - start;
-        var p = Math.min(elapsed / DURATION, 1);
-        var b = bar(index);
-        if (b) b.className = 'p' + Math.round(p * 100);
-        if (p >= 1) select(index + 1, false);
-      }
-      start = now;
-      raf = requestAnimationFrame(tick);
-    }
-
-    function setPlaying(on) {
-      playing = on;
-      if (toggle) {
-        toggle.setAttribute('aria-pressed', on ? 'false' : 'true');
-        toggle.setAttribute('aria-label', on ? 'Pause rotation' : 'Play rotation');
-        var use = toggle.querySelector('use');
-        if (use) use.setAttribute('href', 'assets/img/icons.svg#' + (on ? 'i-pause' : 'i-play'));
-      }
+    function onKey(e) {
+      var key = e.key;
+      if (key === 'ArrowDown' || key === 'ArrowRight') { e.preventDefault(); select(index + 1, true); }
+      else if (key === 'ArrowUp' || key === 'ArrowLeft') { e.preventDefault(); select(index - 1, true); }
+      else if (key === 'Home') { e.preventDefault(); select(0, true); }
+      else if (key === 'End') { e.preventDefault(); select(tabs.length - 1, true); }
     }
 
     tabs.forEach(function (t, k) {
       t.addEventListener('click', function () { select(k, false); });
-      t.addEventListener('keydown', function (e) {
-        var key = e.key;
-        if (key === 'ArrowDown' || key === 'ArrowRight') { e.preventDefault(); setPlaying(false); select(index + 1, true); }
-        else if (key === 'ArrowUp' || key === 'ArrowLeft') { e.preventDefault(); setPlaying(false); select(index - 1, true); }
-        else if (key === 'Home') { e.preventDefault(); setPlaying(false); select(0, true); }
-        else if (key === 'End') { e.preventDefault(); setPlaying(false); select(tabs.length - 1, true); }
-      });
     });
-
-    var prev = $('[data-wip-prev]', root);
-    var next = $('[data-wip-next]', root);
-    if (prev) prev.addEventListener('click', function () { select(index - 1, false); });
-    if (next) next.addEventListener('click', function () { select(index + 1, false); });
-    if (toggle) toggle.addEventListener('click', function () { setPlaying(!playing); });
-
-    root.addEventListener('mouseenter', function () { hovering = true; });
-    root.addEventListener('mouseleave', function () { hovering = false; });
-    root.addEventListener('focusin', function () { hovering = true; });
-    root.addEventListener('focusout', function (e) {
-      if (!root.contains(e.relatedTarget)) hovering = false;
-    });
-
-    setPlaying(playing);
+    root.addEventListener('keydown', onKey);
     select(0, false);
-    raf = requestAnimationFrame(tick);
   }
 
   /* ---------- Research filters ---------- */
