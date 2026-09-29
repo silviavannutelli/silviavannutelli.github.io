@@ -1123,6 +1123,14 @@ html:not(.js) .abs-toggle { display: none; }
 .wip-card .pill { margin-bottom: 10px; }
 .wip-card h3 { font-size: 1.02rem; line-height: 1.3; letter-spacing: -0.01em; }
 .wip-card p { margin: 6px 0 0; font-size: .88rem; color: var(--muted); }
+.wip-explain {
+  max-width: 58ch;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  font-size: .92rem;
+  line-height: 1.5;
+}
 .wip-card p span { color: var(--blue-deep); font-weight: 550; }
 
 /* ---------- Teaching ---------- */
