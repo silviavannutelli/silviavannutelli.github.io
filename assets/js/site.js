@@ -208,6 +208,10 @@
     tabs.forEach(function (t, k) {
       t.addEventListener('click', function () { select(k, false); });
     });
+    var prevBtn = $('[data-wip-prev]', root);
+    var nextBtn = $('[data-wip-next]', root);
+    if (prevBtn) prevBtn.addEventListener('click', function () { select(index - 1, false); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { select(index + 1, false); });
     root.addEventListener('keydown', onKey);
     select(0, false);
   }

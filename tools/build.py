@@ -504,7 +504,11 @@ def wip_window():
   </ul>
   <div class="wip-stage">
     {''.join(panels)}
-    <p class="wip-keys">Arrow keys move between projects. <span class="wip-count" aria-live="polite"><b data-wip-current>1</b> of {len(WIP)}</span></p>
+    <div class="wip-keys">
+      <button type="button" class="wip-arrow prev" data-wip-prev aria-label="Previous project">{icon("i-left")}</button>
+      <button type="button" class="wip-arrow next" data-wip-next aria-label="Next project">{icon("i-right")}</button>
+      <p>Arrow keys move between projects. <span class="wip-count" aria-live="polite"><b data-wip-current>1</b> of {len(WIP)}</span></p>
+    </div>
   </div>
 </div>"""
 
