@@ -468,6 +468,16 @@ def motif_svg(kind, seed):
 
 # ---------------------------------------------------------------- pages
 
+def figure_slot(kind, label):
+    return (
+        f'<figure class="slot">'
+        f'<div class="slot-frame">'
+        f'<span class="slot-kind">{escape(kind)}</span>'
+        f'<span class="slot-label">{escape(label)}</span>'
+        f'</div></figure>'
+    )
+
+
 def wip_window():
     tabs, panels = [], []
     for i, w in enumerate(WIP):
@@ -482,7 +492,7 @@ def wip_window():
         hidden = "" if i == 0 else " hidden"
         panels.append(
             f'<div class="wip-panel" role="tabpanel" id="wip-panel-{i}" aria-labelledby="wip-tab-{i}"{hidden}>'
-            f'<div class="wip-art">{motif_svg(w["motif"], i + 7)}</div>'
+            f'{figure_slot("Graph", w["title"])}'
             f'<div class="wip-meta"></div>'
             f'<h3>{escape(w["title"])}</h3>'
             f'<p class="wip-with">with <span>{escape(", ".join(w["coauthors"][:-1]) + (" and " if len(w["coauthors"]) > 1 else "") + w["coauthors"][-1])}</span></p>'
@@ -524,13 +534,12 @@ def build_home():
         <h1><span class="line"><span>Silvia</span></span><span class="line"><span class="accent">Vannutelli</span></span></h1>
         <p class="hero-statement">I am an Assistant Professor at Northwestern University Department of Economics, a Faculty Research Fellow at the NBER, a Faculty Affiliate at the CEPR and a Senior Affiliate Fellow at the Stigler Center at Chicago Booth.</p>
         <p class="hero-statement">I am the 2026-2027 Glenn Campbell and Rita Ricardo-Campbell National Fellow at the Hoover Institution, so you can currently find me in Stanford.</p>
-        <p class="hero-statement">I am an applied economist using original and administrative data and rigorous empirical methods to answer policy-relevant questions. My research seeks to improve policymaking by explaining how institutional design, political incentives, and organizational structures shape government decisions and public-sector performance. I study governments as complex organizations and examine both the forces that lead policymakers to adopt particular policies and the effects of those choices on individuals, firms, and communities.</p>
         <div class="hero-actions">
           <a class="btn" href="research.html">Explore research {icon("i-right")}</a>
           <a class="btn btn-ghost" href="cv.html">View CV {icon("i-right")}</a>
         </div>
       </div>
-      <div>
+      <div class="hero-figures">
         <div class="portrait">
           <span class="layer layer-1" aria-hidden="true"></span>
           <span class="layer layer-2" aria-hidden="true"></span>
@@ -541,6 +550,11 @@ def build_home():
           </div>
         </div>
       </div>
+    </div>
+    <div class="hero-lower">
+      <p class="hero-statement">I am an applied economist using original and administrative data and rigorous empirical methods to answer policy-relevant questions. My research seeks to improve policymaking by explaining how institutional design, political incentives, and organizational structures shape government decisions and public-sector performance. I study governments as complex organizations and examine both the forces that lead policymakers to adopt particular policies and the effects of those choices on individuals, firms, and communities.</p>
+      {figure_slot("Image", "Add a photograph")}
+      {figure_slot("Image", "Add a photograph")}
     </div>
   </div>
 </section>
@@ -588,6 +602,7 @@ def paper_item(p, kind):
     {note}
     <div class="abstract" id="{abs_id}" aria-hidden="true"><div><p>{escape(p['abstract'])}</p></div></div>
   </div>
+  {figure_slot("Graph", p["title"])}
 </li>"""
 
 
@@ -595,7 +610,7 @@ def build_research():
     pubs = "".join(paper_item(p, "pub") for p in PUBLICATIONS)
     wps = "".join(paper_item(p, "wp") for p in WORKING)
     wip_cards = "".join(
-        f'<li class="wip-card reveal"><h3>{escape(w["title"])}</h3>'
+        f'<li class="wip-card reveal">{figure_slot("Graph", w["title"])}<h3>{escape(w["title"])}</h3>'
         f'<p>with <span>{escape(", ".join(w["coauthors"]))}</span></p>'
         + (f'<p>{escape(w["note"])}</p>' if w.get("note") else "")
         + "</li>"
@@ -688,6 +703,7 @@ def build_teaching():
     </div>
     <div class="abstract" id="{did}" aria-hidden="true"><div>{paras}</div></div>
   </div>
+  {figure_slot("Image", c["title"])}
 </article>""")
     body = f"""
 <header class="page-head">
@@ -707,6 +723,7 @@ def build_teaching():
   <div class="wrap">
     <div class="resource reveal">
       <div>
+        {figure_slot("Image", "Recent Advances in DiD Methods")}
         <span class="tag">Talk · Methods</span>
         <h3>Recent Advances in DiD Methods</h3>
         <p>Here you can find the slides and the video of a talk I gave about Recent Advances in DiD methods.</p>
@@ -739,6 +756,7 @@ def build_wie():
         <span class="tl-when">Northwestern · Advisor, 2021–present</span>
         <h3>Northwestern Womxn in Economics</h3>
         <div class="tl-card">
+          {figure_slot("Photograph", "Northwestern Womxn in Economics")}
           <p>I regularly participate in events organized by {ext("https://economics.northwestern.edu/undergraduate/student-orgs/wie/", "Northwestern Womxn in Economics (WiE)")}, an undergraduate student-led organization seeking to uplift and empower underrepresented genders in economics.</p>
           <p>I held a mini-course about pathways to getting a PhD and the opportunities offered by {ext("https://predoc.org/", "PREDOC")}.</p>
           <div class="paper-actions">{chip("https://www.dropbox.com/s/gpebfmwgt8ga4po/Northwestern-weorg-minicourse.pdf?dl=0", "Mini-course slides", "i-file")}</div>
@@ -749,6 +767,7 @@ def build_wie():
         <span class="tl-when">During my PhD</span>
         <h3>Seminar Dynamics Collective</h3>
         <div class="tl-card">
+          {figure_slot("Photograph", "Seminar Dynamics Collective")}
           <p>I was part of the Seminar Dynamics Collective, a group of almost 100 economists (mostly graduate students) who volunteered to analyze seminar dynamics and collect and code data for the paper “{ext("https://www.nber.org/papers/w28494", "Gender and the Dynamics of Economics Seminars")}” by Pascaline Dupas, Alicia Sasser Modestino, Muriel Niederle, Justin Wolfers and the Seminar Dynamics Collective.</p>
           <div class="paper-actions">
             {chip("https://www.nber.org/papers/w28494", "NBER paper")}
@@ -761,6 +780,7 @@ def build_wie():
         <span class="tl-when">Boston University · Co-Chair, 2017–2019</span>
         <h3>BU Women in Economics (WEOrg)</h3>
         <div class="tl-card">
+          {figure_slot("Photograph", "BU Women in Economics")}
           <p>I served as Co-Chair of BU WEOrg, a graduate student-led organization dedicated to the advancement of women in all stages of economic research.</p>
           <div class="paper-actions">
             {chip("https://www.bu.edu/econ/students/studentorgs/weorg/", "BU WEOrg website")}
@@ -773,6 +793,7 @@ def build_wie():
         <span class="tl-when">Summer 2019 · Organizer</span>
         <h3>WERISE Conference</h3>
         <div class="tl-card">
+          {figure_slot("Photograph", "WERISE Conference")}
           <p>We organized {ext("https://questromworld.bu.edu/weorg/", "WERISE")} (Women in Economics: Research, Ideas, Solutions, Executions), a conference bringing together leading scholars for a comprehensive overview of research on the status of women in economics, to reach a deeper understanding of the challenges women face in the profession and to spur ideas for concrete solutions.</p>
           <div class="paper-actions">{chip("https://questromworld.bu.edu/weorg/", "Conference site")}</div>
         </div>
