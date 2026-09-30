@@ -630,27 +630,27 @@ def build_research():
   <div class="wrap">
     <div class="seg" role="group" aria-label="Filter research">
       <button type="button" data-filter="all" aria-pressed="true">All <span class="count">{len(PUBLICATIONS) + len(WORKING) + len(WIP)}</span></button>
-      <button type="button" data-filter="in-progress" aria-pressed="false">In progress <span class="count">{len(WIP)}</span></button>
       <button type="button" data-filter="publications" aria-pressed="false">Publications <span class="count">{len(PUBLICATIONS)}</span></button>
       <button type="button" data-filter="working-papers" aria-pressed="false">Working papers <span class="count">{len(WORKING)}</span></button>
+      <button type="button" data-filter="in-progress" aria-pressed="false">In progress <span class="count">{len(WIP)}</span></button>
     </div>
   </div>
 </div>
 
 <div class="wrap">
-  <section class="group" id="in-progress" data-group="in-progress" aria-labelledby="h-wip">
-    <div class="group-title"><h2 id="h-wip">Selected work in progress</h2><span class="tag">{len(WIP)} projects</span></div>
-    <ul class="wip-grid">{wip_cards}</ul>
-  </section>
-
   <section class="group" id="publications" data-group="publications" aria-labelledby="h-pubs">
     <div class="group-title"><h2 id="h-pubs">Publications</h2><span class="tag">{len(PUBLICATIONS)} papers</span></div>
     <ul class="papers">{pubs}</ul>
   </section>
 
-  <section class="group group-last" id="working-papers" data-group="working-papers" aria-labelledby="h-wps">
+  <section class="group" id="working-papers" data-group="working-papers" aria-labelledby="h-wps">
     <div class="group-title"><h2 id="h-wps">Working papers</h2><span class="tag">{len(WORKING)} papers</span></div>
     <ul class="papers">{wps}</ul>
+  </section>
+
+  <section class="group group-last" id="in-progress" data-group="in-progress" aria-labelledby="h-wip">
+    <div class="group-title"><h2 id="h-wip">Selected work in progress</h2><span class="tag">{len(WIP)} projects</span></div>
+    <ul class="wip-grid">{wip_cards}</ul>
   </section>
 </div>
 """
