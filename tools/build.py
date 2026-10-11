@@ -542,10 +542,6 @@ def build_home():
           <span class="layer layer-1" aria-hidden="true"></span>
           <span class="layer layer-2" aria-hidden="true"></span>
           <img src="assets/img/headshot.jpg" width="415" height="517" alt="Portrait of Silvia Vannutelli">
-          <div class="portrait-badge">
-            <span class="tag">2026–27</span>
-            <strong>Glenn Campbell and Rita Ricardo-Campbell National Fellow</strong> at the Hoover Institution, Stanford
-          </div>
         </div>
       </div>
     </div>
