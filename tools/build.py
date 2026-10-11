@@ -499,7 +499,7 @@ def wip_window():
         )
     return f"""
 <div class="wip reveal" data-wip>
-  <ul class="wip-list" role="tablist" aria-label="Selected work in progress" aria-orientation="vertical">
+  <ul class="wip-list" role="tablist" aria-label="Research highlights" aria-orientation="vertical">
     {''.join(tabs)}
   </ul>
   <div class="wip-stage">
@@ -552,18 +552,6 @@ def build_home():
         {figure_slot("Photograph", "Home photograph")}
       </div>
     </div>
-  </div>
-</section>
-
-<section class="section" id="work-in-progress">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <h2>Selected work in progress</h2>
-      </div>
-      <a class="btn btn-ghost btn-sm" href="research.html#in-progress">All research {icon("i-right")}</a>
-    </div>
-    {wip_window()}
   </div>
 </section>
 """
@@ -628,7 +616,7 @@ def build_research():
       <button type="button" data-filter="all" aria-pressed="true">All <span class="count">{len(PUBLICATIONS) + len(WORKING) + len(WIP)}</span></button>
       <button type="button" data-filter="publications" aria-pressed="false">Publications <span class="count">{len(PUBLICATIONS)}</span></button>
       <button type="button" data-filter="working-papers" aria-pressed="false">Working papers <span class="count">{len(WORKING)}</span></button>
-      <button type="button" data-filter="in-progress" aria-pressed="false">In progress <span class="count">{len(WIP)}</span></button>
+      <button type="button" data-filter="in-progress" aria-pressed="false">Works in progress <span class="count">{len(WIP)}</span></button>
     </div>
   </div>
 </div>
@@ -639,13 +627,18 @@ def build_research():
     <ul class="papers">{pubs}</ul>
   </section>
 
+  <section class="group" id="highlights" data-group="highlights" aria-labelledby="h-highlights">
+    <div class="group-title"><h2 id="h-highlights">Research highlights</h2></div>
+    {wip_window()}
+  </section>
+
   <section class="group" id="working-papers" data-group="working-papers" aria-labelledby="h-wps">
     <div class="group-title"><h2 id="h-wps">Working papers</h2><span class="tag">{len(WORKING)} papers</span></div>
     <ul class="papers">{wps}</ul>
   </section>
 
   <section class="group group-last" id="in-progress" data-group="in-progress" aria-labelledby="h-wip">
-    <div class="group-title"><h2 id="h-wip">Selected work in progress</h2><span class="tag">{len(WIP)} projects</span></div>
+    <div class="group-title"><h2 id="h-wip">Works in progress</h2><span class="tag">{len(WIP)} projects</span></div>
     <ul class="wip-grid">{wip_cards}</ul>
   </section>
 </div>

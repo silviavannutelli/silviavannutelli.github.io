@@ -1013,6 +1013,7 @@ a { color: inherit; }
 }
 .group-title h2 { font-size: 1.55rem; }
 .group-title .tag { color: var(--muted); }
+.group .wip { margin-top: 18px; }
 
 .papers { list-style: none; margin: 0; padding: 0; }
 .paper {
