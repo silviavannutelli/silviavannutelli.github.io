@@ -646,15 +646,7 @@ def build_research():
         <span class="tag">Principal Investigator</span>
       </div>
       <h3>Global Government GenAI Observatory</h3>
-      <p class="project-lead">Documenting and studying the use of generative AI across public institutions worldwide.</p>
-      <p class="project-desc is-placeholder">Brief description. A few sentences on this project.</p>
-      <p class="project-lead">G3O builds a versioned, open-source panel of institution-level observations that make public-sector GenAI use visible, comparable, and auditable at scale.</p>
-      <ul class="project-points">
-        <li>Documents evidence, tools, vendors, safeguards, and governance practices.</li>
-        <li>Supports cumulative research and evidence-based policy.</li>
-        <li>Promotes transparency, reproducibility, and auditability.</li>
-      </ul>
-      <p class="project-note">A project by researchers at Stanford University, Northwestern University, and the University of Rochester.</p>
+      <p class="project-desc is-placeholder">Placeholder text. A few sentences will go here.</p>
       <div class="paper-actions">
         <a class="btn" href="{escape(safe_href("https://simonepaciphd.github.io/g3o-website/"))}" target="_blank" rel="noopener noreferrer">G3O website {icon("i-right")}</a>
       </div>
