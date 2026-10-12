@@ -823,7 +823,6 @@ def build_students():
   <div class="wrap">
     <div class="roster-block reveal">
       <h2 class="roster-title">Placeholder title</h2>
-      <h2 class="roster-title">Placeholder title</h2>
       <article class="roster">
         <h3 class="roster-sub">Placeholder subheading</h3>
         <ul class="roster-list">
