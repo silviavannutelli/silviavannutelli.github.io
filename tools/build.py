@@ -821,11 +821,13 @@ def build_students():
 
 <section class="section">
   <div class="wrap">
-    <article class="roster reveal">
+    <div class="roster-block reveal">
       <h2 class="roster-title">Placeholder title</h2>
       <h2 class="roster-title">Placeholder title</h2>
-      <p class="is-placeholder">Placeholder text. A few sentences will go here.</p>
-    </article>
+      <article class="roster">
+        <p class="is-placeholder">Placeholder text. A few sentences will go here.</p>
+      </article>
+    </div>
   </div>
 </section>
 """
