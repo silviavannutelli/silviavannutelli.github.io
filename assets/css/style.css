@@ -1138,11 +1138,11 @@ html:not(.js) .abs-toggle { display: none; }
 
 .project { max-width: 68ch; padding-bottom: 24px; }
 .project-kicker { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: baseline; }
-.project h2 {
+.project h3 {
   margin: 14px 0 0;
-  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-size: clamp(1.45rem, 2.4vw, 1.9rem);
   letter-spacing: -0.03em;
-  line-height: 1.12;
+  line-height: 1.15;
 }
 .project-lead {
   margin: 16px 0 0;

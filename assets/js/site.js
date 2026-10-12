@@ -230,7 +230,9 @@
         b.setAttribute('aria-pressed', b.getAttribute('data-filter') === filter ? 'true' : 'false');
       });
       groups.forEach(function (g) {
-        g.hidden = !(filter === 'all' || g.getAttribute('data-group') === filter);
+        var group = g.getAttribute('data-group');
+        var show = filter === 'all' || group === filter || (group === 'projects' && filter === 'working-papers');
+        g.hidden = !show;
         if (!g.hidden) $all('.reveal', g).forEach(function (el) { el.classList.add('is-in'); });
       });
       if (push) {

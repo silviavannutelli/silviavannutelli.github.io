@@ -18,7 +18,6 @@ CV_URL = "https://www.dropbox.com/scl/fi/ll2bxqbce6hzrvaxrr8pe/2026_Apr_CV_Vannu
 NAV = [
     ("index.html", "Home"),
     ("research.html", "Research"),
-    ("projects.html", "Projects"),
     ("teaching.html", "Teaching"),
     ("women-in-economics.html", "Women in Economics"),
     ("cv.html", "CV"),
@@ -638,33 +637,14 @@ def build_research():
     <ul class="papers">{wps}</ul>
   </section>
 
-  <section class="group group-last" id="in-progress" data-group="in-progress" aria-labelledby="h-wip">
-    <div class="group-title"><h2 id="h-wip">Works in progress</h2><span class="tag">{len(WIP)} projects</span></div>
-    <ul class="wip-grid">{wip_cards}</ul>
-  </section>
-</div>
-"""
-    page("research.html", "Research", "Research by Silvia Vannutelli.", body)
-
-
-def build_projects():
-    g3o = "https://simonepaciphd.github.io/g3o-website/"
-    body = f"""
-<header class="page-head">
-  <div class="wrap">
-    <span class="tag">03 · Projects</span>
-    <h1>Projects</h1>
-  </div>
-</header>
-
-<section class="section">
-  <div class="wrap">
-    <article class="project reveal" id="g3o">
+  <section class="group" id="projects" data-group="projects" aria-labelledby="h-projects">
+    <div class="group-title"><h2 id="h-projects">Projects</h2></div>
+    <article class="project" id="g3o">
       <div class="project-kicker">
         <span class="tag">G3O</span>
         <span class="tag">Principal Investigator</span>
       </div>
-      <h2>Global Government GenAI Observatory</h2>
+      <h3>Global Government GenAI Observatory</h3>
       <p class="project-lead">Documenting and studying the use of generative AI across public institutions worldwide.</p>
       <p class="project-desc is-placeholder">Brief description. A few sentences on this project.</p>
       <p class="project-lead">G3O builds a versioned, open-source panel of institution-level observations that make public-sector GenAI use visible, comparable, and auditable at scale.</p>
@@ -675,13 +655,18 @@ def build_projects():
       </ul>
       <p class="project-note">A project by researchers at Stanford University, Northwestern University, and the University of Rochester.</p>
       <div class="paper-actions">
-        <a class="btn" href="{escape(safe_href(g3o))}" target="_blank" rel="noopener noreferrer">G3O website {icon("i-right")}</a>
+        <a class="btn" href="{escape(safe_href("https://simonepaciphd.github.io/g3o-website/"))}" target="_blank" rel="noopener noreferrer">G3O website {icon("i-right")}</a>
       </div>
     </article>
-  </div>
-</section>
+  </section>
+
+  <section class="group group-last" id="in-progress" data-group="in-progress" aria-labelledby="h-wip">
+    <div class="group-title"><h2 id="h-wip">Works in progress</h2><span class="tag">{len(WIP)} projects</span></div>
+    <ul class="wip-grid">{wip_cards}</ul>
+  </section>
+</div>
 """
-    page("projects.html", "Projects", "Projects by Silvia Vannutelli.", body)
+    page("research.html", "Research", "Research by Silvia Vannutelli.", body)
 
 
 def build_teaching():
@@ -736,7 +721,7 @@ def build_teaching():
     body = f"""
 <header class="page-head">
   <div class="wrap">
-    <span class="tag">04 · Teaching</span>
+    <span class="tag">03 · Teaching</span>
     <h1>Teaching</h1>
   </div>
 </header>
@@ -770,7 +755,7 @@ def build_wie():
     body = f"""
 <header class="page-head">
   <div class="wrap">
-    <span class="tag">05 · Community</span>
+    <span class="tag">04 · Community</span>
     <h1>Women in Economics</h1>
   </div>
 </header>
@@ -863,7 +848,7 @@ def build_cv():
     body = f"""
 <header class="page-head">
   <div class="wrap">
-    <span class="tag">06 · Curriculum Vitae</span>
+    <span class="tag">05 · Curriculum Vitae</span>
     <h1>CV</h1>
     <div class="cv-bar reveal">
       <div><strong>Full CV (PDF)</strong><span>Updated April 2026. Grants, teaching, service, advising, and refereeing are in the PDF.</span></div>
@@ -918,7 +903,6 @@ def build_404():
 if __name__ == "__main__":
     build_home()
     build_research()
-    build_projects()
     build_teaching()
     build_wie()
     build_cv()
