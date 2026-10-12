@@ -20,6 +20,7 @@ NAV = [
     ("research.html", "Research"),
     ("teaching.html", "Teaching"),
     ("women-in-economics.html", "Women in Economics"),
+    ("students.html", "Students and RAs"),
     ("cv.html", "CV"),
 ]
 
@@ -817,6 +818,28 @@ def build_wie():
     page("women-in-economics.html", "Women in Economics", "Women in Economics, Silvia Vannutelli.", body)
 
 
+def build_students():
+    body = """
+<header class="page-head">
+  <div class="wrap">
+    <span class="tag">05 · Students</span>
+    <h1>Students and RAs</h1>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <article class="roster reveal">
+      <h2 class="roster-title">Placeholder title</h2>
+      <h2 class="roster-title">Placeholder title</h2>
+      <p class="is-placeholder">Placeholder text. A few sentences will go here.</p>
+    </article>
+  </div>
+</section>
+"""
+    page("students.html", "Students and RAs", "Students and research assistants, Silvia Vannutelli.", body)
+
+
 def rows(items):
     out = []
     for when, what, small in items:
@@ -848,7 +871,7 @@ def build_cv():
     body = f"""
 <header class="page-head">
   <div class="wrap">
-    <span class="tag">05 · Curriculum Vitae</span>
+    <span class="tag">06 · Curriculum Vitae</span>
     <h1>CV</h1>
     <div class="cv-bar reveal">
       <div><strong>Full CV (PDF)</strong><span>Updated April 2026. Grants, teaching, service, advising, and refereeing are in the PDF.</span></div>
@@ -905,6 +928,7 @@ if __name__ == "__main__":
     build_research()
     build_teaching()
     build_wie()
+    build_students()
     build_cv()
     build_404()
     open(os.path.join(OUT, ".nojekyll"), "w").close()

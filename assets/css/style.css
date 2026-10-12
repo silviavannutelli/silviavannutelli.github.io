@@ -1168,6 +1168,32 @@ html:not(.js) .abs-toggle { display: none; }
 .project-note { margin: 16px 0 0; color: var(--muted); font-size: .95rem; }
 .project .paper-actions { margin-top: 22px; }
 
+/* ---------- Students and RAs ---------- */
+
+.roster {
+  max-width: 680px;
+  padding: clamp(28px, 4vw, 44px) clamp(24px, 4vw, 40px) clamp(32px, 5vw, 48px);
+  border: 1px solid var(--ink);
+  background: transparent;
+}
+.roster-title {
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--blue);
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.4vw, 1.65rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+}
+.roster-title + .roster-title { margin-top: 4px; }
+.roster p {
+  margin: 22px 0 0;
+  max-width: 58ch;
+  line-height: 1.7;
+}
+
 /* ---------- Teaching ---------- */
 
 .courses { display: grid; gap: 16px; }
