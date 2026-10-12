@@ -825,7 +825,20 @@ def build_students():
       <h2 class="roster-title">Placeholder title</h2>
       <h2 class="roster-title">Placeholder title</h2>
       <article class="roster">
-        <p class="is-placeholder">Placeholder text. A few sentences will go here.</p>
+        <h3 class="roster-sub">Placeholder subheading</h3>
+        <ul class="roster-list">
+          <li class="is-placeholder">Placeholder student. A short note on their role.</li>
+          <li class="is-placeholder">Placeholder student. A short note on their role.</li>
+          <li class="is-placeholder">Placeholder student. A short note on their role.</li>
+          <li class="is-placeholder">Placeholder student. A short note on their role.</li>
+        </ul>
+        <h3 class="roster-sub">Placeholder subheading</h3>
+        <ul class="roster-list">
+          <li class="is-placeholder">Placeholder student. A short note on their role.</li>
+          <li class="is-placeholder">Placeholder student. A short note on their role.</li>
+          <li class="is-placeholder">Placeholder student. A short note on their role.</li>
+          <li class="is-placeholder">Placeholder student. A short note on their role.</li>
+        </ul>
       </article>
     </div>
   </div>
