@@ -1134,6 +1134,40 @@ html:not(.js) .abs-toggle { display: none; }
 }
 .wip-card p span { color: var(--blue-deep); font-weight: 550; }
 
+/* ---------- Projects ---------- */
+
+.project { max-width: 68ch; padding-bottom: 24px; }
+.project-kicker { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: baseline; }
+.project h2 {
+  margin: 14px 0 0;
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+.project-lead {
+  margin: 16px 0 0;
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+.project-desc {
+  margin: 22px 0 0;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  line-height: 1.65;
+}
+.project-points {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+.project-points li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.project-note { margin: 16px 0 0; color: var(--muted); font-size: .95rem; }
+.project .paper-actions { margin-top: 22px; }
+
 /* ---------- Teaching ---------- */
 
 .courses { display: grid; gap: 16px; }
